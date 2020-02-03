@@ -1,17 +1,17 @@
 # Movie Rating
 
-This project was created for ACS by OnlineFormaPro. 
+This project was created by OnlineFormaPro Access Code School. 
 
-It consist on a web app for showing different movie, actors and directors.
+It consists of a web app for displaying different movies, actors and directors.
 
 ## Installation
 
-This project require composer !
+This project requires composer !
 
 Package required :
 - Twig
 
-You can install everything with the command here : 
+You can install everything with the following command: 
 
     composer require twig/twig
     
@@ -19,4 +19,4 @@ You can install everything with the command here :
 
 ## Informations
 
-This project use the gitignore.io list for .gitignore
+This project uses the gitignore.io list for .gitignore
