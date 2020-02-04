@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function showHome()
     {
-        $pageTwig = 'index.html.twig';
+        $pageTwig = 'home.html.twig';
         $template = self::$_twig->load($pageTwig);
         echo $template->render();
     }
