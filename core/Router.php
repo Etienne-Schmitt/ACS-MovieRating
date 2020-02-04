@@ -9,7 +9,7 @@ class Router
     private $uri;
     private $routes = [];
     private $namedRoutes = [];
-
+    
     /**
      * Router constructor.
      * @param $uri
