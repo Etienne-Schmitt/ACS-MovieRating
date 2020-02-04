@@ -7,7 +7,7 @@
 class Route
 {
     private string $path;
-    private array $callable = [];
+    private string $callable;
     private array $matches = [];
     private array $params = [];
 
