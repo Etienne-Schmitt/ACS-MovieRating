@@ -6,9 +6,9 @@
  */
 class Router
 {
-    private string $uri;
-    private array $routes = [];
-    private array $namedRoutes = [];
+    private $uri;
+    private $routes = [];
+    private $namedRoutes = [];
 
     /**
      * Router constructor.

@@ -6,10 +6,10 @@
  */
 class Route
 {
-    private string $path;
-    private string $callable;
-    private array $matches = [];
-    private array $params = [];
+    private $path;
+    private $callable;
+    private $matches = [];
+    private $params = [];
 
     /**
      * Route constructor.
