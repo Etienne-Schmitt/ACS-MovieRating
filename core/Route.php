@@ -51,7 +51,6 @@ class Route
             $params = explode('.', $this->callable);
             $controllerName = $params[0] . "Controller";
             $controller = new $controllerName;
-            var_dump($this);
             return call_user_func_array([$controller, $params[1]], $this->matches);
         }
         return call_user_func_array($this->callable, $this->matches);
