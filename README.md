@@ -14,9 +14,14 @@ Package required :
 You can install everything with the following command: 
 
     composer require twig/twig
+
+
+And don't forget to create your autoloader with :
+
+    composer dump-autoload
     
 
 
-## Informations
+## About
 
 This project uses the gitignore.io list for .gitignore
