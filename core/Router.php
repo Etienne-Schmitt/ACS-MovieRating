@@ -33,6 +33,17 @@ class Router
     /**
      * @param $path
      * @param $callable
+     * @param null $name
+     * @return Route
+     */
+    public function addRoutePOST($path, $callable, $name = null)
+    {
+        return $this->addRoute($path, $callable, $name, 'POST');
+    }
+
+    /**
+     * @param $path
+     * @param $callable
      * @param $name
      * @param $method
      * @return Route
