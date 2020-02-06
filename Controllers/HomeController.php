@@ -12,7 +12,7 @@ use Twig\Error\SyntaxError;
 class HomeController extends Controller
 {
     /**
-     * HomeController constructor.
+     * HomeController constructor
      */
     public function __construct()
     {
@@ -20,11 +20,6 @@ class HomeController extends Controller
         self::$_twig = parent::getTwig();
     }
 
-    /**
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
     public function showHome()
     {
         $pageTwig = 'home.html.twig';
