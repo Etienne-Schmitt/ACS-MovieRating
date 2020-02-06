@@ -6,9 +6,10 @@ class HomeModel extends Model {
         $this->pdo = parent::getPdo();
     }
 
-    public function getOneMovie($id) {
-        $req = $this->pdo->prepare('SELECT exemple.*, truc.*,
-        GROUP_CONCAT(truc.text) AS text FROM exemple, truc, exemple_truc WHERE exemple.id = ? AND exemple.id = exemple_truc.id_exemple AND exemple_truc.id_truc = truc.id_truc');
+    public function getMovie($id) {
+        // $req = $this->pdo->prepare('SELECT exemple.*, truc.*,
+        // GROUP_CONCAT(truc.text) AS text FROM exemple, truc, exemple_truc WHERE exemple.id = ? AND exemple.id = exemple_truc.id_exemple AND exemple_truc.id_truc = truc.id_truc');
+        $req = $this->pdo->prepare('SELECT * FROM film WHERE id_film = ?');
         $req->execute([$id]);
         return $req->fetch();
     }

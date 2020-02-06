@@ -22,17 +22,17 @@ class HomeController extends Controller
       self::$_twig = parent::getTwig();
     }
   
-        public function index() {
-            $result = $this->model->getAllMovies();
-            $pageTwig = 'home.html.twig';
-            $template = self::$_twig->load($pageTwig);
-            echo $template->render(["result" => $result]);
-        }
+      public function index() {
+          $result = $this->model->getAllMovies();
+          $pageTwig = 'home.html.twig';
+          $template = self::$_twig->load($pageTwig);
+          echo $template->render(["result" => $result]);
+      }
 
-        public function showHome()
-        {
-            $pageTwig = 'home.html.twig';
-            $template = self::$_twig->load($pageTwig);
-            echo $template->render();
-        }
+      public function show(int $id) {
+        $result = $this->model->getMovie($id);
+        $pageTwig = 'show.html.twig';
+        $template = self::$_twig->load($pageTwig);
+        echo $template->render(["result" => $result]);
+      }
 }
