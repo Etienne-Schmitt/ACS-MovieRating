@@ -154,3 +154,6 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/linux,windows,jetbrains+all,visualstudiocode,composer,dotenv
 
 core/config.json
+
+Uploads/posters/*
+!Uploads/posters/.gitkeep
