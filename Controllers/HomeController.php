@@ -20,15 +20,32 @@ class HomeController extends Controller
         self::$_twig = parent::getTwig();
     }
 
-    /**
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
     public function showHome()
     {
-        $pageTwig = 'home.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render();
+        echo $this->showPage('home');
     }
+
+    public function showGenre()
+    {
+        echo $this->showPage('genre');
+    }
+
+    public function showActor()
+    {
+        echo $this->showPage('actor');
+    }
+
+    public function showDirector()
+    {
+        echo $this->showPage('director');
+    }
+
+    private function showPage($page)
+    {
+        $template = self::$_twig->load($page . ".html.twig" );
+        return $template->render();
+    }
+
+
+
 }

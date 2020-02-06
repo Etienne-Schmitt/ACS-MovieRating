@@ -1,6 +1,6 @@
 <?php 
 
-class Artiste {
+class Film {
         private $titre;
         private $annee_sortie;
         private $affiche;

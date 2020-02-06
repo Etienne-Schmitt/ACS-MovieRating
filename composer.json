@@ -4,6 +4,6 @@
       "ext-json": "*"
     },
     "autoload": {
-        "classmap": ["core/", "Controllers/", "Models/", "Views/"]
+        "classmap": ["core/", "Controllers/", "Models/", "Views/", "Admin/"]
     }
 }
