@@ -12,15 +12,31 @@
 {% endblock %}
 
 {% block body %}
-<h1>Welcome</h1>
-{% for exemple in result %}
+<h1>Your Favorite Movie Database</h1>
+<div class="container-fluid">
+  <div class="row ">
+  
+  {% for exemple in result %}
+  <div class="col-md-2">
+    <div class="card text-white bg-dark">
+      <img src='../Uploads/posters/{{ exemple.affiche }}' class="img-thumbnail p-0 b-0">
+      <div class="card-body">
+        <h5 class="card-title">{{ exemple.titre }}</h5>
+        {# <p class="card-text">{{ exemple.synposis }}</p> #}
+        <a href="{{baseUrl}}/movies/show/{{exemple.id_film}}" class="btn btn-info">Show</a>
+      </div>
+    </div>
+    </div>
 
-<p>{{ exemple.id_film }}</p>
+{# <p class="zero_mg">{{ exemple.id_film }}</p>
 <p>{{ exemple.titre }}</p>
 <p>{{ exemple.annee_sortie }}</p>
-<p><img src='../Uploads/posters/' . {{ exemple.affiche }}></p>
-<p><a href="{{baseUrl}}/exemple/show/{{exemple.id_film}}">Lien</a></p>
+<p><img src='../Uploads/posters/{{ exemple.affiche }}'></p>
+<p>{{ exemple.synposis }}</p>
+<p><a href="{{baseUrl}}/movies/show/{{exemple.id_film}}">Lien</a></p> #}
 {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
 
