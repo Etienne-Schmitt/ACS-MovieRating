@@ -16,14 +16,23 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        parent::__construct();
-        self::$_twig = parent::getTwig();
-    }
+      parent::__construct();
+      $this->model = new HomeModel();
 
-    public function showHome()
-    {
-        $pageTwig = 'home.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render();
+      self::$_twig = parent::getTwig();
     }
+  
+        public function index() {
+            $result = $this->model->getAllMovies();
+            $pageTwig = 'home.html.twig';
+            $template = self::$_twig->load($pageTwig);
+            echo $template->render(["result" => $result]);
+        }
+
+        public function showHome()
+        {
+            $pageTwig = 'home.html.twig';
+            $template = self::$_twig->load($pageTwig);
+            echo $template->render();
+        }
 }

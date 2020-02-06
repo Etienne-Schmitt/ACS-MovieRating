@@ -13,6 +13,15 @@
 
 {% block body %}
 <h1>Welcome</h1>
+{% for exemple in result %}
+
+<p>{{ exemple.id_film }}</p>
+<p>{{ exemple.titre }}</p>
+<p>{{ exemple.annee_sortie }}</p>
+<p><img src='../Uploads/posters/' . {{ exemple.affiche }}></p>
+<p><a href="{{baseUrl}}/exemple/show/{{exemple.id_film}}">Lien</a></p>
+{% endfor %}
+
 {% endblock %}
 
 {% block footer %}

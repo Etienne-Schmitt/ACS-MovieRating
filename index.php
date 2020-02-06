@@ -3,7 +3,7 @@ require_once 'vendor/autoload.php';
 
 $mainRouter = new Router($_GET['uri']);
 
-$mainRouter->addRouteGET('/', 'Home.showHome');
+$mainRouter->addRouteGET('/', 'Home.index');
 
 
 try {
