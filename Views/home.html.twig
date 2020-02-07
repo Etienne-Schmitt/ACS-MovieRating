@@ -8,40 +8,31 @@
 {% endblock %}
 
 {% block header %}
-
 {% endblock %}
 
 {% block body %}
 <h1>Your Favorite Movie Database</h1>
-<div class="container-fluid">
-  <div class="row ">
-  
-  {% for exemple in result %}
-  <div class="col-md-2">
-    <div class="card text-white bg-dark">
-      <img src='../Uploads/posters/{{ exemple.affiche }}' class="img-thumbnail p-0 b-0">
-      <div class="card-body">
-        <h5 class="card-title">{{ exemple.titre }}</h5>
-        {# <p class="card-text">{{ exemple.synposis }}</p> #}
-        <a href="{{baseUrl}}/show/{{exemple.id_film}}" class="btn btn-info">Show</a>
+<div class="back_page">
+  <div class="container">
+    <div class="row ">
+      {% for exemple in result %}
+      <div class="col-md-3">
+        <div class="card text-white bg-dark mb-4">
+          <a href="{{baseUrl}}/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img p-0 b-0"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{ exemple.titre }}</h5>
+            {# <p class="card-text">{{ exemple.synposis }}</p> #}
+            {# <a href="{{baseUrl}}/show/{{exemple.id_film}}" class="btn btn-info">Show</a> #}
+          </div>
+        </div>
       </div>
+      {% endfor %}
     </div>
-    </div>
-
-{# <p class="zero_mg">{{ exemple.id_film }}</p>
-<p>{{ exemple.titre }}</p>
-<p>{{ exemple.annee_sortie }}</p>
-<p><img src='../Uploads/posters/{{ exemple.affiche }}'></p>
-<p>{{ exemple.synposis }}</p>
-<p><a href="{{baseUrl}}/movies/show/{{exemple.id_film}}">Lien</a></p> #}
-{% endfor %}
   </div>
 </div>
-
 {% endblock %}
 
 {% block footer %}
-
 {% endblock %}
 
 {% block javascripts %}

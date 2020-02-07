@@ -8,12 +8,13 @@ body {
   background-color: #DAE0FF;
 }
 
-h1{
+h1 {
   text-align: center;
   margin-bottom: 0px;
   padding-bottom: 3rem;
 }
 
-.container-fluid {
+.back_page {
   background-color: lightblue;
 }
+

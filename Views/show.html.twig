@@ -1,31 +1,31 @@
 {% extends "partials/base.html.twig" %}
 
-{% block title %}Show Movie{% endblock %}
+{% block title %}{{ result.titre }}{% endblock %}
 
 
 {% block stylesheets %}
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 {% endblock %}
 
 {% block header %}
 {% endblock %}
 
 {% block body %}
-<h1>Your Favorite Movie Database</h1>
-<div class="container-fluid">
-  <div class="row ">
-   <div class="col-md-2">
-    <div class="card text-white bg-dark">
-      <img src='/Uploads/posters/{{ result.affiche }}' class="img-thumbnail p-0 b-0">
+<h1 style="text-align: center;">Your Selected Movie</h1>
+<div class="card mb-3 text-white bg-dark mx-auto" style="max-width: 1000px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src='/Uploads/posters/{{ result.affiche }}' class="img-fluid">
+    </div>
+    <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ result.titre }}</h5>
         <p class="card-text">{{ result.synposis }}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
-   </div>
   </div>
 </div>
-
 {% endblock %}
 
 {% block footer %}
