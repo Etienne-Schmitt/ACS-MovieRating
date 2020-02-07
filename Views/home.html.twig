@@ -14,11 +14,11 @@
 <h1>Your Favorite Movie Database</h1>
 <div class="back_page">
   <div class="container">
-    <div class="row ">
+    <div class="row pt-4">
       {% for exemple in result %}
       <div class="col-md-3">
         <div class="card text-white bg-dark mb-4">
-          <a href="{{baseUrl}}/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img p-0 b-0"></a>
+          <a href="{{baseUrl}}/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img b-0"></a>
           <div class="card-body">
             <h5 class="card-title">{{ exemple.titre }}</h5>
             {# <p class="card-text">{{ exemple.synposis }}</p> #}
