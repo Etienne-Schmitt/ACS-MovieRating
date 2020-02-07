@@ -1,24 +1,18 @@
 <?php 
 
-class Genre {
-        private $nom_genre;
-        public function __construct($nom_genre){
+        class Genre extends Model
+{
+    public function __construct()
+    {
+        $this->pdo = parent::getPdo();
+    }
 
-            
-        }
-        public function createGenre(){
-
-            
-
-        }
-         public function deleteGenre(){
-
-            
-        }
-        public function updateGenre(){
-
-            
-        }
-
-
-        }
+    public function getAllGenres()
+    {
+        $sql = 'SELECT * FROM genre';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    
+}

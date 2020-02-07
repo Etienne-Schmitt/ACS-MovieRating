@@ -3,21 +3,31 @@
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
+use App\Entity\Genre;
 
 
 /**
  * Class HomeController
  * @mixin
  */
+
+
+   
+    
+
+ 
 class HomeController extends Controller
 {
     /**
      * HomeController constructor.
+     * 
      */
+    
     public function __construct()
     {
         parent::__construct();
         self::$_twig = parent::getTwig();
+        
     }
 
     public function showHome()
