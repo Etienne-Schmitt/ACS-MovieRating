@@ -3,10 +3,11 @@ require_once 'vendor/autoload.php';
 
 $mainRouter = new Router($_GET['uri']);
 
-$mainRouter->addRouteGET('/actor', 'Home.showActor');
-$mainRouter->addRouteGET('/genre', 'Home.showGenre');
-$mainRouter->addRouteGET('/director', 'Home.showDirector');
 $mainRouter->addRouteGET('/', 'Home.showHome');
+
+$mainRouter->addRouteGET('/genre', 'Genre.showGenre');
+ $mainRouter->addRouteGET('/artist', 'Artist.showArtist');
+$mainRouter->addRouteGET('/director', 'Home.showDirector');
 
 
 try {

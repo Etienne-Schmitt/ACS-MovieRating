@@ -9,11 +9,13 @@ class GenreController extends Controller {
         $this->model = new Genre();
     }
 
-    public function index() {
+    public function showGenre() {
         $result = $this->model->getAllGenres();
-        var_dump($result);
-        $pageTwig = 'Genres/genre.html.twig';
-        $template = $this->twig->load($pageTwig);
+        //var_dump($result);
+        $pageTwig = 'genre/genre.html.twig';
+        //$tewigu = "test var twig";
+         //self::$_twig->addGlobal('tewigu', $tewigu);
+        $template = self::$_twig->load($pageTwig);
         echo $template->render(["result" => $result]);
     }
     
@@ -36,4 +38,4 @@ class GenreController extends Controller {
 //         $template = $this->twig->load($pageTwig);
 //         echo $template->render(['test' => $test]);
 //     }
-// } 
+} 

@@ -9,7 +9,7 @@
 
     public function getAllGenres()
     {
-        $sql = 'SELECT * FROM genre';
+        $sql = 'SELECT * FROM movie_genres';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll();

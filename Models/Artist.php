@@ -1,29 +1,18 @@
 <?php 
 
-class Artiste {
-    private $nom_artiste;
-    private $prenom_artiste;
-    private $date_naissance;
-
-    public function __construct($nom_artiste, $prenom_artiste, $date_naissance)
+        class Artist extends Model
+{
+    public function __construct()
     {
-
-
+        $this->pdo = parent::getPdo();
     }
-    public function createArtiste()
+
+    public function getAllArtists()
     {
-
-
-
+        $sql = 'SELECT * FROM artists';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll();
     }
-
-    public function deleteArtiste()
-    {
-
-
-    }
-    public function updateArtiste(){
-
-
-    }
+    
 }

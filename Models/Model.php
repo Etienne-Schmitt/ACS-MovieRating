@@ -1,6 +1,6 @@
 <?php
 
-abstract class HomeModels {
+abstract class Model {
     private const CONFIG = __DIR__ . '/../core/config.json';
 
     private const OPTIONS = [

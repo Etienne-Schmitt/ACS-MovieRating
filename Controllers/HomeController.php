@@ -10,12 +10,7 @@ use App\Entity\Genre;
  * Class HomeController
  * @mixin
  */
-
-
    
-    
-
- 
 class HomeController extends Controller
 {
     /**
