@@ -31,10 +31,10 @@ class HomeController extends Controller
 
     public function show(int $id) {
       $result = $this->model->getActors($id);
+      $movieDetails = $this->model->getMovieDetails($id);
       $pageTwig = 'show.html.twig';
-      // var_dump($result);
       self::$_twig->addGlobal('actor', $result);
       $template = self::$_twig->load($pageTwig);
-      echo $template->render(["result" => $result]);
+      echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
     }
 }

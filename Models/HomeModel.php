@@ -15,7 +15,7 @@ class HomeModel extends Model {
     public function getMovieDetails($id) {
       $req = $this->pdo->prepare('SELECT * FROM film WHERE id_film = ?');
       $req->execute([$id]);
-      return $req->fetchAll();
+      return $req->fetch();
   }
 
     public function getAllMovies() {
