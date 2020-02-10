@@ -46,7 +46,7 @@ class MoviesController extends Controller
           $test = null;
       }
       $pageTwig = 'test.html.twig';
-      $template = $this->twig->load($pageTwig);
+      $template = self::$_twig->load($pageTwig);
       echo $template->render(['test' => $test]);
   }
 }
