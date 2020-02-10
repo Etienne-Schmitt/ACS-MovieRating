@@ -1,10 +1,9 @@
 {% extends "partials/base.html.twig" %}
 
-{% block title %}{{ result.titre }}{% endblock %}
-
+{% block title %}{{ movieDetails.titre }}{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 {% endblock %}
 
 {% block header %}
@@ -21,14 +20,15 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ movieDetails.titre }},&nbsp;{{ movieDetails.annee_sortie }}</h5>
-        <p class="card-text"><strong>Starring:</strong></p>
-        <ul>
-        {% for exemple in result %}
-          <li class="card-text">{{ exemple.prenom_artiste }} {{ exemple.nom_artiste }}{% if not loop.last %},&nbsp;{% endif %}</li>
-        {% endfor %}
-        </ul>
-        <p class="card-text"><strong>Synopsis:</strong></p>
-        <p class="card-text">{{ movieDetails.synposis }}</p>
+        <div class="card-block d-flex">
+          <p><strong>Starring:</strong></p>
+          <ul>
+            {% for exemple in result %}
+              <li class="card-text">&nbsp;{{ exemple.prenom_artiste }} {{ exemple.nom_artiste }}{% if not loop.last %},&nbsp;{% endif %}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <p class="card-text"><strong>Synopsis:</strong><br>{{ movieDetails.synposis }}</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>

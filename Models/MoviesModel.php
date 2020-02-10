@@ -1,6 +1,6 @@
 <?php
 
-class HomeModel extends Model {
+class MoviesModel extends Model {
     public function __construct()
     {
         $this->pdo = parent::getPdo();
