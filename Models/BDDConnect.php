@@ -1,13 +1,12 @@
 <?php
 
-abstract class Model {
-    private const CONFIG = __DIR__ . '/../core/config.json';
+abstract class BDDConnect {
 
+    private const CONFIG = __DIR__ . '/../core/config.json';
+    protected static $_pdo = null; 
     private const OPTIONS = [
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ];
-
-    protected static $_pdo = null; 
 
     protected static function getPdo() {
         if (is_null(self::$_pdo)) {

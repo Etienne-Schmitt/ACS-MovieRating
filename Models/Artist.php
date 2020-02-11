@@ -1,6 +1,6 @@
 <?php 
 
-        class Artist extends Model
+class Artist extends BDDConnect
 {
     public function __construct()
     {
@@ -14,5 +14,8 @@
         $req->execute();
         return $req->fetchAll();
     }
+
+    
+
     
 }
