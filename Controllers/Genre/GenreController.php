@@ -10,8 +10,7 @@ class GenreController extends Controller {
     }
 
     public function showGenre() {
-        $result = $this->model->getAllGenres();
-        //var_dump($result);
+        $result = $this->movieGenre->getAllGenres();
         $pageTwig = 'genre/genre.html.twig';
         //$tewigu = "test var twig";
          //self::$_twig->addGlobal('tewigu', $tewigu);
