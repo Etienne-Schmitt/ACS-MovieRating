@@ -1,0 +1,43 @@
+{% extends "partials/base.html.twig" %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ baseUrl }}/assets/css/style.css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+<h1>Add Movie</h1>
+<div class="container">
+  <div class="row"> 
+    <form action="{{baseUrl}}/movies/add" method="POST" class="mx-auto" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="text" name="titre" class="form-control" id="titre" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="annee_sortie">Annee de sortie</label>
+        <input type="number" name="annee_sortie" class="form-control" id="annee_sortie">
+      </div>
+      {# <div class="form-group">
+        <label for="affiche">Affiche</label>
+        <input type="file" name="affiche" class="form-control" id="affiche">
+      </div> #}
+      <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <textarea name="synopsis" class="form-control" id="synopsis" col="50" row="20"></textarea>
+      </div>
+      <button type="submit" name="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

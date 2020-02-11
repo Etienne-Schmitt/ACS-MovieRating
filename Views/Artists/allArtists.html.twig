@@ -1,6 +1,6 @@
 {% extends "partials/base.html.twig" %}
 
-{% block title %}Movies Database{% endblock %}
+{% block title %}Artists Database{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href="assets/css/style.css">
@@ -10,18 +10,18 @@
 {% endblock %}
 
 {% block body %}
-<h1>Your Favorite Movies Database</h1>
+<h1>Artists List</h1>
 <div class="back_page">
   <div class="container">
     <div class="row pt-4">
       {% for exemple in result %}
       <div class="col-md-3">
         <div class="card text-white bg-dark mb-4">
-          <a href="{{baseUrl}}/movies/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img b-0"></a>
+          <img src='../Uploads/posters/{{ exemple.image }}' class="card-img b-0">
           <div class="card-body">
-            <h5 class="card-title">{{ exemple.titre }}</h5>
-            {# <p class="card-text">{{ exemple.synposis }}</p> #}
-            {# <a href="{{baseUrl}}/show/{{exemple.id_film}}" class="btn btn-info">Show</a> #}
+            <h5 class="card-title">{{ exemple.nom_artiste }} {{ exemple.prenom_artiste }}</h5>
+            <p>Birth date: {{ exemple.date_naissance }}</p>
+            <p class="card-text">Biography: <br>{{ exemple.biography }}</p>
           </div>
         </div>
       </div>

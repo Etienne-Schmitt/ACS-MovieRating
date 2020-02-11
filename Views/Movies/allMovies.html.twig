@@ -1,9 +1,9 @@
 {% extends "partials/base.html.twig" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Movies Database{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="{{ baseUrl }}/assets/css/style.css">
 {% endblock %}
 
 {% block header %}
@@ -17,7 +17,7 @@
       {% for exemple in result %}
       <div class="col-md-3">
         <div class="card text-white bg-dark mb-4">
-          <a href="{{baseUrl}}/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img b-0"></a>
+          <a href="{{baseUrl}}/movies/show/{{exemple.id_film}}"><img src='../Uploads/posters/{{ exemple.affiche }}' class="card-img b-0"></a>
           <div class="card-body">
             <h5 class="card-title">{{ exemple.titre }}</h5>
             {# <p class="card-text">{{ exemple.synposis }}</p> #}
