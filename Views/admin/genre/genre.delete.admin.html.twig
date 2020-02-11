@@ -21,16 +21,20 @@
                 </div>
                 <select class="custom-select" name="genre-delete" id="genre-delete">
                     <option value="">--Please choose a genre--</option>
-                    {% for id, genre in arrayGenre %}
-                        <option name="{{ id }}" id="{{ id }}">{{ genre }}</option>
-                    {% endfor %}
+                    {% if arrayGenre is defined %}
+                        {% for id, genre in arrayGenre %}
+                            <option name="{{ id }}" id="{{ id }}">{{ genre }}</option>
+                        {% endfor %}
+                    {% endif %}
                 </select>
             </div>
             <div id="form-btn-group">
-                <input type="button" value="Delete genre" class="btn btn-primary" data-toggle="modal" data-target="#deleteGenreModal">
+                <input type="button" value="Delete genre" class="btn btn-primary" data-toggle="modal"
+                       data-target="#deleteGenreModal">
                 <input type="reset" value="Reset" class="btn btn-danger">
             </div>
-            <div class="modal fade" id="deleteGenreModal" tabindex="-1" role="dialog" aria-labelledby="deleteGenreModalTitle" aria-hidden="true">
+            <div class="modal fade" id="deleteGenreModal" tabindex="-1" role="dialog"
+                 aria-labelledby="deleteGenreModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
