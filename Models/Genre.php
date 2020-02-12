@@ -10,8 +10,7 @@ class Genre extends BDDConnect
 
     public function getAllGenres()
     {
-        $sql = 'SELECT genre FROM movie_genres';
-        //$sql = 'SELECT * FROM movie_genres';
+        $sql = 'SELECT * FROM movie_genres';
         $req = self::$_pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll();
@@ -24,13 +23,31 @@ class Genre extends BDDConnect
         $req->bindParam(':genre', $genre);
         return $req->execute();
     }
-
-    //exemple('L\'homme irrationnel','Woody Allen','2015');
-     // or die(print-r($bdd->errorInfo())) ;
-    /* le or die est inutile avec la connexion en ERRMODE */
-    /* $resultat pour traiter les erreurs proprement, sans ERRMODE */
-
-
     
-        
+    public function getGenre()
+    {
+        $sql ="SELECT genre FROM movie_genres
+        WHERE id_genre = $id_genre";
+        $req = self::$_pdo->prepare($sql);
+        return $req->execute();
+    }
+    
+    public function getGenreByName($id_genre)
+    {
+        $sql="SELECT * from movie_genres where id_genre = :id_genre";
+        $req=self::$_pdo->prepare($sql);
+        $req->bindParam(':id_genre', $id_genre, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_OgitBJ);
+    }
+
+    public function updateGenre($id_genre, $genre)
+    {
+        $sql ="UPDATE movie_genres
+        SET genre = '$genre'
+        WHERE id_genre = $id_genre";
+        $req = self::$_pdo->prepare($sql);
+    return $req->execute();
+    }
+    
     } 
