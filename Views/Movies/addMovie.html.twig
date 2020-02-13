@@ -23,23 +23,30 @@
         <input type="number" name="annee_sortie" class="form-control" id="annee_sortie">
       </div>
       <div class="form-group">
-        <label for="annee_sortie">Synopsis</label>
-        <textarea name="synopsis" class="form-control" id="synopsis" col="50" row="20"></textarea>
+        <label for="director">Director</label>
+        <select name="director" class="form-control" id="director">
+        {% for director in directors %}
+        <option value="{{ director.id_artiste }}">{{ director.prenom_artiste }} {{ director.nom_artiste }}</option>
+        {% endfor %}
+        </select>
       </div>
       <div class="form-group">
-        <label for="genre">Artist</label>
-        <select name="genre" class="form-control" id="genre">
-        {% for exemple in result %}
-        <option value="{{ exemple.id_artiste }}">{{ exemple.prenom_artiste }} {{ exemple.nom_artiste }}</option>
-        {% endfor %}
+        <label for="annee_sortie">Synopsis</label>
+        <textarea name="synopsis" class="form-control" id="synopsis" rows="3" placeholder="Synopsis"></textarea>
       </div>
-
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <select name="genre" class="form-control" id="genre">
+        {% for genre in genres %}
+        <option value="{{ genre.id_genre }}">{{ genre.nom_genre }}</option>
+        {% endfor %}
+        </select>
+      </div>
+      <button type="submit" name="submit" class="btn btn-primary" value="Submit">Submit</button>
       {# <div class="form-group">
         <label for="affiche">Affiche</label>
         <input type="file" name="affiche" class="form-control" id="affiche">
       </div> #}
-      
-      <button type="submit" name="submit" class="btn btn-primary" value="Submit">Submit</button>
     </form>
   </div>
 </div>

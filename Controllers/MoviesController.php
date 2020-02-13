@@ -34,20 +34,19 @@ class MoviesController extends Controller
       $result = $this->model->getActors($id);
       $movieDetails = $this->model->getMovieDetails($id);
       $pageTwig = 'Movies/showMovie.html.twig';
-      self::$_twig->addGlobal('actor', $result);
+      //self::$_twig->addGlobal('actor', $result);
       $template = self::$_twig->load($pageTwig);
       echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
     }
 
-    
-
     public function addMovie() {
-      // Fetch all directors from the database into a dropdown list on the Add Movie page
-      $result = $this->model->getAllDirectors();
+      // Fetch all directors and genres from the database into two dropdown lists on the Add Movie page
+      $directors = $this->model->getAllDirectors();
+      $genres = $this->model->getAllGenres();
       // Display the input form on the Add Movie page
       $pageTwig = 'Movies/addMovie.html.twig';
       $template = self::$_twig->load($pageTwig);
-      echo $template->render(["result" => $result]);
+      echo $template->render(["directors" => $directors, "genres" => $genres]);
     }
 
     public function insertNewMovie() {
@@ -56,11 +55,19 @@ class MoviesController extends Controller
       // $affiche = $_FILES['affiche']['name'];
       // $affiche_temp = $_FILES['affiche']['tmp_name'];
       $synopsis = $_POST['synopsis'];
-      if($this->model->insertMovie($titre, $annee_sortie, $synopsis))
+      $genre = $_POST['genre'];
+      $director = $_POST['director'];
+      
+      if($this->model->insertMovie($titre, $annee_sortie, $synopsis, $genre, $director))
       {
         echo "ok";
       } else {
         echo "pas ok";
+        echo $_POST['director'] . '<br>';
+        echo $_POST['titre'] . '<br>';
+        echo $_POST['annee_sortie'] . '<br>';
+        echo $_POST['synopsis'] . '<br>';
+        echo $_POST['genre'];
       }
       //header("Location: http://localhost/ACS-MovieRating/movies");
       //exit;
