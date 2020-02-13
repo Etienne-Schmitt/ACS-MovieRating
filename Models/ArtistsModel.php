@@ -19,16 +19,8 @@ class ArtistsModel extends Model {
   // }
 
     public function getAllArtists() {
-        //$req = $this->pdo->prepare('SELECT * FROM exemple');
-        //$req = $this->pdo->prepare('SELECT exemple.*, truc.* FROM exemple, truc, exemple_truc WHERE exemple.id = exemple_truc.id_exemple AND exemple_truc.id_truc = truc.id');
         $req = $this->pdo->prepare(
-            // 'SELECT e.*, t.*,
-            // GROUP_CONCAT(DISTINCT t.text SEPARATOR "\#~#") AS text
-            // FROM exemple e
-            // INNER JOIN exemple_truc et ON e.id = et.id_exemple
-            // INNER JOIN truc t ON et.id_truc = t.id_truc
-            // GROUP BY e.id'
-            'SELECT * FROM artiste'
+          'SELECT * FROM artiste'
         );
         $req->execute();
         return $req->fetchAll();

@@ -39,10 +39,15 @@ class MoviesController extends Controller
       echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
     }
 
+    
+
     public function addMovie() {
+      // Fetch all directors from the database into a dropdown list on the Add Movie page
+      $result = $this->model->getAllDirectors();
+      // Display the input form on the Add Movie page
       $pageTwig = 'Movies/addMovie.html.twig';
       $template = self::$_twig->load($pageTwig);
-      echo $template->render();
+      echo $template->render(["result" => $result]);
     }
 
     public function insertNewMovie() {
@@ -51,8 +56,13 @@ class MoviesController extends Controller
       // $affiche = $_FILES['affiche']['name'];
       // $affiche_temp = $_FILES['affiche']['tmp_name'];
       $synopsis = $_POST['synopsis'];
-      $this->model->insertMovie($titre, $annee_sortie, $synopsis);
-      header("Location: http://localhost/ACS-MovieRating/movies/add");
-      exit;
+      if($this->model->insertMovie($titre, $annee_sortie, $synopsis))
+      {
+        echo "ok";
+      } else {
+        echo "pas ok";
+      }
+      //header("Location: http://localhost/ACS-MovieRating/movies");
+      //exit;
     }
 }

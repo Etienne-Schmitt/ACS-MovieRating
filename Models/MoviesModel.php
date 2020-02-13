@@ -34,6 +34,13 @@ class MoviesModel extends Model {
       return $req->fetchAll();
     }
 
+    public function getAllDirectors() {
+      $req = $this->pdo->prepare(
+        'SELECT DISTINCT nom_artiste, prenom_artiste FROM artiste a, film f WHERE a.id_artiste = f.artiste_id_artiste');
+      $req->execute();
+      return $req->fetchAll();
+    }
+
     public function insertMovie($titre, $annee_sortie, $synopsis) {
       $sql = "INSERT INTO film (titre, annee_sortie, synposis) VALUES (:titre, :annee_sortie, :synopsis)";
       $req = self::$_pdo->prepare($sql);
@@ -42,7 +49,8 @@ class MoviesModel extends Model {
       // // $req->bindParam(':affiche', $affiche);
       // // $req->bindParam(':affiche_temp', $affiche_temp);
       // $req->bindParam(':synopsis', $synopsis);
-      return $req->execute(['titre' => $titre, 'annee_sortie' => $annee_sortie, 'synopsis' => $synopsis]);
+      return $req->execute([':titre' => $titre, ':annee_sortie' => $annee_sortie, ':synopsis' => $synopsis]);
       // move_uploaded_file($affiche_temp, "/Uploads/posters/$affiche");
+      //var_dump($synopsis);
     }
 }

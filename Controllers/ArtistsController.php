@@ -38,15 +38,4 @@ class ArtistsController extends Controller
   //     echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
   //   }
 
-  //   public function add() {
-  //     if(isset($_POST['test'])) {
-  //         $test = $_POST['test'];
-  //         header('Location: ');
-  //     } else {
-  //         $test = null;
-  //     }
-  //     $pageTwig = 'Movies/test.html.twig';
-  //     $template = self::$_twig->load($pageTwig);
-  //     echo $template->render(['test' => $test]);
-  // }
 }
