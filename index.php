@@ -9,6 +9,11 @@ $mainRouter->addRouteGET('/movies/show/:id', "Movies.showMovie");
 $mainRouter->addRouteGET('/movies/add', "Movies.addMovie");
 $mainRouter->addRoutePOST('/movies/add', "Movies.insertNewMovie");
 
+$mainRouter->addRouteGET('/movies/updatemovies', "Movies.getAllMovies");
+
+$mainRouter->addRouteGET('/movies/updatemovies/:id', "Movies.getMovie");
+$mainRouter->addRoutePOST('/movies/updatemovies/:id', "Movies.updateMovie");
+
 $mainRouter->addRouteGET('/movies', 'Movies.index');
 $mainRouter->addRouteGET('/artists', 'Artists.index');
 

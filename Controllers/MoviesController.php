@@ -31,12 +31,12 @@ class MoviesController extends Controller
     }
 
     public function showMovie(int $id) {
-      $result = $this->model->getActors($id);
+      $actorsDetails = $this->model->getActorsDetails($id);
       $movieDetails = $this->model->getMovieDetails($id);
       $pageTwig = 'Movies/showMovie.html.twig';
       //self::$_twig->addGlobal('actor', $result);
       $template = self::$_twig->load($pageTwig);
-      echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
+      echo $template->render(["actorsDetails" => $actorsDetails, "movieDetails" => $movieDetails]);
     }
 
     public function addMovie() {
@@ -73,7 +73,29 @@ class MoviesController extends Controller
       //   echo $_POST['synopsis'] . '<br>';
       //   echo $_POST['genre'];
       // }
-      
+
       header("Location: http://localhost/ACS-MovieRating/movies");
+    }
+
+    public function getAllMovies() {
+      $getAllMovies = $this->model->getAllMovies();
+      $pageTwig = 'Movies/getAllMovies.html.twig';
+      $template = self::$_twig->load($pageTwig);
+      echo $template->render(["getAllMovies" => $getAllMovies]);
+    }
+
+    public function getMovie($id_film) {
+      $movieDetails = $this->model->getMovieDetails($id_film);
+      $director = $this->model->getDirectorDetails($id_film);
+      $directors = $this->model->getAllOtherDirectors($id_film);
+
+      $genre = $this->model->getGenre($id_film);
+      $genres = $this->model->getAllOtherGenres($id_film);
+
+      $pageTwig = 'Movies/getMovie.html.twig';
+      $template = self::$_twig->load($pageTwig);
+      echo $template->render(["movieDetails" => $movieDetails, 'director' => $director, 'directors' => $directors, 'genre' => $genre, 'genres' => $genres]);
+
+
     }
 }

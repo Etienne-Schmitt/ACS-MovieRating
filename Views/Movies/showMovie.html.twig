@@ -23,7 +23,7 @@
         <div class="card-block d-flex">
           <p><strong>Starring:</strong></p>
           <ul>
-            {% for exemple in result %}
+            {% for exemple in actorsDetails %}
               <li class="card-text">&nbsp;{{ exemple.prenom_artiste }} {{ exemple.nom_artiste }}{% if not loop.last %},&nbsp;{% endif %}</li>
             {% endfor %}
           </ul>
