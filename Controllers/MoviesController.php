@@ -52,24 +52,28 @@ class MoviesController extends Controller
     public function insertNewMovie() {
       $titre = $_POST['titre'];
       $annee_sortie = $_POST['annee_sortie'];
-      // $affiche = $_FILES['affiche']['name'];
-      // $affiche_temp = $_FILES['affiche']['tmp_name'];
+      $affiche = $_FILES['affiche']['name'];
+      $affiche_temp = $_FILES['affiche']['tmp_name'];
       $synopsis = $_POST['synopsis'];
       $genre = $_POST['genre'];
       $director = $_POST['director'];
+
+      move_uploaded_file($affiche_temp, "../Uploads/posters/$affiche");
+
+      $this->model->insertMovie($titre, $annee_sortie, $affiche, $synopsis, $genre, $director);
+
+      // if($this->model->insertMovie($titre, $annee_sortie, $synopsis, $genre, $director))
+      // {
+      //   echo "ok";
+      // } else {
+      //   echo "pas ok";
+      //   echo $_POST['director'] . '<br>';
+      //   echo $_POST['titre'] . '<br>';
+      //   echo $_POST['annee_sortie'] . '<br>';
+      //   echo $_POST['synopsis'] . '<br>';
+      //   echo $_POST['genre'];
+      // }
       
-      if($this->model->insertMovie($titre, $annee_sortie, $synopsis, $genre, $director))
-      {
-        echo "ok";
-      } else {
-        echo "pas ok";
-        echo $_POST['director'] . '<br>';
-        echo $_POST['titre'] . '<br>';
-        echo $_POST['annee_sortie'] . '<br>';
-        echo $_POST['synopsis'] . '<br>';
-        echo $_POST['genre'];
-      }
-      //header("Location: http://localhost/ACS-MovieRating/movies");
-      //exit;
+      header("Location: http://localhost/ACS-MovieRating/movies");
     }
 }

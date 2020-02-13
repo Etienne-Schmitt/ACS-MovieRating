@@ -41,15 +41,14 @@ class MoviesModel extends Model {
       return $req->fetchAll();
     }
 
-    public function insertMovie($titre, $annee_sortie, $synopsis, $genre, $director) {
-      $sql = "INSERT INTO film (titre, annee_sortie, synposis, genre_id_genre, artiste_id_artiste) VALUES (:titre, :annee_sortie, :synopsis, :genre, :director)";
+    public function insertMovie($titre, $annee_sortie, $affiche, $synopsis, $genre, $director) {
+      $sql = "INSERT INTO film (titre, annee_sortie, affiche, synposis, genre_id_genre, artiste_id_artiste) VALUES (:titre, :annee_sortie, :affiche, :synopsis, :genre, :director)";
       $req = self::$_pdo->prepare($sql);
       // $req->bindParam(':titre', $titre);
       // $req->bindParam(':annee_sortie', $annee_sortie);
       // // $req->bindParam(':affiche', $affiche);
       // // $req->bindParam(':affiche_temp', $affiche_temp);
       // $req->bindParam(':synopsis', $synopsis);
-      return $req->execute(['titre' => $titre, 'annee_sortie' => $annee_sortie, 'synopsis' => $synopsis, 'genre' => $genre, 'director' => $director]);
-      // move_uploaded_file($affiche_temp, "/Uploads/posters/$affiche");
+      return $req->execute(['titre' => $titre, 'annee_sortie' => $annee_sortie, 'affiche' => $affiche, 'synopsis' => $synopsis, 'genre' => $genre, 'director' => $director]);
     }
 }
