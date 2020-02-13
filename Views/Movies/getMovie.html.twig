@@ -13,7 +13,7 @@
 <h1>Add Movie</h1>
 <div class="container">
   <div class="row"> 
-    <form action="{{baseUrl}}/movies/updateMovie/{{ movieDetails.id_film }}" method="POST" class="mx-auto" enctype="multipart/form-data">
+    <form action="{{baseUrl}}/movies/updatemovies/{{ movieDetails.id_film }}" method="POST" class="mx-auto" enctype="multipart/form-data">
       <div class="form-group">
         <label for="titre">Titre</label>
         <input type="text" name="titre" class="form-control" id="titre" aria-describedby="emailHelp" value="{{ movieDetails.titre }}">
@@ -37,7 +37,7 @@
         <input type="file" name="affiche" class="form-control-file" id="exampleFormControlFile1">
       </div>
       <div class="form-group">
-        <label for="annee_sortie">Synopsis</label>
+        <label for="synopsis">Synopsis</label>
         <textarea name="synopsis" class="form-control" id="synopsis" rows="6" placeholder="Synopsis" >{{ movieDetails.synposis }}</textarea>
       </div>
       <div class="form-group">

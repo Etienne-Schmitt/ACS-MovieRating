@@ -84,6 +84,7 @@ class MoviesController extends Controller
       echo $template->render(["getAllMovies" => $getAllMovies]);
     }
 
+    // Function to fetch all the data from the DB into the Update Movie form on the Update Movie page
     public function getMovie($id_film) {
       $movieDetails = $this->model->getMovieDetails($id_film);
       $director = $this->model->getDirectorDetails($id_film);
@@ -95,7 +96,25 @@ class MoviesController extends Controller
       $pageTwig = 'Movies/getMovie.html.twig';
       $template = self::$_twig->load($pageTwig);
       echo $template->render(["movieDetails" => $movieDetails, 'director' => $director, 'directors' => $directors, 'genre' => $genre, 'genres' => $genres]);
+    }
 
+    public function updateMovie($id_film) {
+      $titre = $_POST['titre'];
+      $annee_sortie = $_POST['annee_sortie'];
+      $affiche = $_FILES['affiche']['name'];
+      $affiche_temp = $_FILES['affiche']['tmp_name'];
+      $synopsis = $_POST['synopsis'];
+      $genre = $_POST['genre'];
+      $director = $_POST['director'];
 
+      move_uploaded_file($affiche_temp, "../Uploads/posters/$affiche");
+
+      if($this->model->updateMovie($id_film, $titre, $annee_sortie, $affiche, $synopsis, $genre, $director)) {
+        echo "ok";
+      } else {
+        echo "not ok";
+      };
+
+      // header("Location: http://localhost/ACS-MovieRating/movies");
     }
 }
