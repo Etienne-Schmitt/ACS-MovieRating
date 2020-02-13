@@ -26,11 +26,11 @@
         width: 9em;
     }
 
-    #form-data #form-btn-group input:first-child {
-        margin-right: 0.5em;
+    #form-data #previous-poster-group input[type=button] {
+        width: 18.20em;
     }
 
-    #form-data #form-btn-group {
+    #form-data #form-btn-group, #form-data #previous-poster-group {
         text-align: end;
     }
 }
