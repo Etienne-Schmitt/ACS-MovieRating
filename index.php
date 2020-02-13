@@ -4,6 +4,7 @@ require_once 'vendor/autoload.php';
 $mainRouter = new Router($_GET['uri']);
 
 $mainRouter->addRouteGET('/admin/artist/get/:id', 'Admin.getArtistData');
+$mainRouter->addRouteGET('/admin/movie/get/:id', 'Admin.getMovieData');
 
 $mainRouter->addRouteGET('/admin/genre/add', 'Admin.showAddGenre');
 $mainRouter->addRouteGET('/admin/genre/edit', 'Admin.showEditGenre');
