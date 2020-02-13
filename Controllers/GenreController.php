@@ -5,12 +5,12 @@ class GenreController extends Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->model = new Genre();
+        $this->movieGenre = new Genre();
     }
 
     public function showGenre() 
     {
-        $result = $this->model->getAllGenres();
+        $result = $this->movieGenre->getAllGenres();
         $pageTwig = 'genre/genre.html.twig';
         $template = self::$_twig->load($pageTwig);
         echo $template->render(["result" => $result]);
@@ -37,7 +37,16 @@ class GenreController extends Controller {
         $this->movieGenre->updateGenre($id_genre, $genre);
         //header('Location: ' . self::$_baseUrl . '/genre');
         $uri = self::$_baseUrl;
-        header("Location: $uri/admin/genre/update");
+        //header("Location: $uri/admin/genre/update");
+        header("Location: $uri/genre");
+        exit ;
+    }
+
+    public function deleteGenreById($id)
+    {
+        $this->movieGenre->deleteGenre($id);
+        $uri = self::$_baseUrl;
+        header("Location: $uri/genre");
         exit ;
     }
 } 

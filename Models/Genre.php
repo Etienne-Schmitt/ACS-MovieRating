@@ -38,7 +38,7 @@ class Genre extends BDDConnect
         $req=self::$_pdo->prepare($sql);
         $req->bindParam(':id_genre', $id_genre, PDO::PARAM_INT);
         $req->execute();
-        return $req->fetch(PDO::FETCH_OgitBJ);
+        return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function updateGenre($id_genre, $genre)
@@ -46,6 +46,14 @@ class Genre extends BDDConnect
         $sql ="UPDATE movie_genres
         SET genre = '$genre'
         WHERE id_genre = $id_genre";
+        $req = self::$_pdo->prepare($sql);
+    return $req->execute();
+    }
+
+    public function deleteGenre($id_genre)
+    {
+        echo "bravo";
+        $sql ="DELETE FROM `movie_genres` WHERE `movie_genres`.`id_genre` = $id_genre";
         $req = self::$_pdo->prepare($sql);
     return $req->execute();
     }
