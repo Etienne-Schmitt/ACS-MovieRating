@@ -1,0 +1,35 @@
+        {% extends "partials/base.html.twig" %}
+
+        {% block title %}Genre{% endblock %}
+        
+        {% block body %}
+   <br>   
+<div class="container text-center ">
+       <h2>Listed genres</h2>
+       <p></p>
+        <table id="myTable" class="w-50 mx-auto bg-white table table-striped table-sm table-hover text-center" >
+        <thead>
+        <tr>
+               
+                <th scope="col">Genre</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+
+        </tr>
+        </thead>
+        {% for movie_genres in result %}
+        <tbody>
+        <tr>
+                
+                <td>{{movie_genres.genre}}</td>
+                <td><a href="{{baseUrl}}/genre/update/{{movie_genres.id_genre}}"><img src="assets\img/modifier.svg" style="width:30px; height:30px;"></a></td>
+                <td><a href="{{baseUrl}}/genre/delete/{{movie_genres.id_genre}}"><img src="assets\img/trash-outline.svg" style="width:30px; height:30px;"></a></td>
+              
+                
+        </tr>
+        </tbody>
+        
+                {% endfor %}
+        </table>
+       </div>
+        {% endblock %}

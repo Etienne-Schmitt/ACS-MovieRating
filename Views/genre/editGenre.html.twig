@@ -1,0 +1,33 @@
+        {% extends "partials/base.html.twig" %}
+
+        {% block title %}Genre{% endblock %}
+        
+        {% block body %}
+   <br>   
+<div class="container text-center ">
+       <h2>Listed genres</h2>
+       <p></p>
+        <table id="myTable" class="w-50 mx-auto bg-white table table-striped table-sm table-hover text-center" >
+        <thead>
+        <tr>
+               <th scope="col">Id genre</th>
+                <th scope="col">Genre</th>
+             
+
+        </tr>
+        </thead>
+        {% for movie_genres in result %}
+        <tbody>
+        <tr>
+                
+                <td>{{movie_genres.id_genre}}</td>
+               <td>{{movie_genres.genre}}</td>
+              
+                
+        </tr>
+        </tbody>
+        
+                {% endfor %}
+        </table>
+       </div>
+        {% endblock %}
