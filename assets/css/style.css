@@ -6,11 +6,6 @@
   background-color: lightblue;
 }
 
-.card-block ul {
-  list-style: none;
-  display: flex;
-}
-
 .img-size {
   height: 20em;
 
