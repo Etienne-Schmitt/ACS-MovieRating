@@ -1,0 +1,40 @@
+{% extends "partials/base.html.twig" %}
+
+{% block title %}{{ movieDetails.titre }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-0 pb-3">Your Selected Movie</h1>
+    <div class="card mb-3 text-white bg-dark mx-auto" style="max-width: 1000px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src='{{ baseUrl }}/Uploads/posters/{{ movie.poster }}' class="img-fluid"
+                     alt="Poster {{ movie.poster }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }},&nbsp;{{ movie.year }}</h5>
+                    <div class="card-block d-flex">
+                        <p class="font-weight-bold">Starring:</p>
+                        <ul class="list-unstyled d-flex">
+                            {% for actor in actorsArray %}
+                                <li class="card-text">
+                                    {{ actor.firstname }} {{ actor.lastname }}{% if not loop.last %}, {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <p class="card-text"><strong>Synopsis:</strong><br>{{ movie.synopsis }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
