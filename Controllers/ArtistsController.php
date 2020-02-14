@@ -28,14 +28,4 @@ class ArtistsController extends Controller
       $template = self::$_twig->load($pageTwig);
       echo $template->render(["result" => $result]);
     }
-
-  //   public function show(int $id) {
-  //     $result = $this->model->getActors($id);
-  //     $movieDetails = $this->model->getMovieDetails($id);
-  //     $pageTwig = 'Movies/showMovie.html.twig';
-  //     self::$_twig->addGlobal('actor', $result);
-  //     $template = self::$_twig->load($pageTwig);
-  //     echo $template->render(["result" => $result, "movieDetails" => $movieDetails]);
-  //   }
-
 }

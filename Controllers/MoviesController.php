@@ -62,18 +62,6 @@ class MoviesController extends Controller
 
       $this->model->insertMovie($titre, $annee_sortie, $affiche, $synopsis, $genre, $director);
 
-      // if($this->model->insertMovie($titre, $annee_sortie, $synopsis, $genre, $director))
-      // {
-      //   echo "ok";
-      // } else {
-      //   echo "pas ok";
-      //   echo $_POST['director'] . '<br>';
-      //   echo $_POST['titre'] . '<br>';
-      //   echo $_POST['annee_sortie'] . '<br>';
-      //   echo $_POST['synopsis'] . '<br>';
-      //   echo $_POST['genre'];
-      // }
-
       header("Location: http://localhost/ACS-MovieRating/movies");
     }
 
