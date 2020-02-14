@@ -21,8 +21,16 @@ class GenreController extends Controller {
         $pageTwig = 'genre/addGenre.html.twig';
         $template = self::$_twig->load($pageTwig);
         echo $template->render();
+        
     }
-
+    public function insertNewGenre() 
+    
+    {
+        $genre = $_POST['genre'];
+        $this->movieGenre->insertGenre($id_genre,$genre);
+        header('Location: http://localhost/MovieFilm/genre/add');
+        exit;
+    }
     public function getGenreById($id)
     {
         $result = $this->movieGenre->getGenreByName($id);
