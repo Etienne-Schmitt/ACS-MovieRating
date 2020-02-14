@@ -1,6 +1,6 @@
 <?php
 
-class ArtistsModel extends Model {
+class ArtistsDbConnect extends dbConnect {
     public function __construct()
     {
         $this->pdo = parent::getPdo();

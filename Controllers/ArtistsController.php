@@ -17,7 +17,7 @@ class ArtistsController extends Controller
   public function __construct()
   {
     parent::__construct();
-    $this->model = new ArtistsModel();
+    $this->model = new ArtistsDbConnect();
 
     self::$_twig = parent::getTwig();
   }

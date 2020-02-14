@@ -1,6 +1,6 @@
 <?php
 
-abstract class Model {
+abstract class dbConnect {
     private const CONFIG = __DIR__ . '/../core/config.json';
 
     private const OPTIONS = [
