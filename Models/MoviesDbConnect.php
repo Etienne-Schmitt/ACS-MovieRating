@@ -1,29 +1,43 @@
 <?php
 
-class MoviesModel extends Model {
+class MoviesDbConnect extends dbConnect
+{
     public function __construct()
     {
-      $this->pdo = parent::getPdo();
+        $this->pdo = parent::getPdo();
     }
 
-    public function getActorsDetails($id) {
-      $req = $this->pdo->prepare('SELECT nom_artiste, prenom_artiste FROM artiste a, film f, artiste_has_film m where a.id_artiste = m.artiste_id_artiste AND f.id_film = m.film_id_film AND f.id_film = ? AND a.id_artiste NOT IN (SELECT artiste_id_artiste FROM film)');
-      $req->execute([$id]);
-      return $req->fetchAll();
+    /**
+     * @param $movieID int ID of a movie
+     * @return array Contains all actors from a movie
+     */
+    public function getActorsDetails($movieID)
+    {
+        $req = $this->pdo->prepare('SELECT nom_artiste, prenom_artiste FROM artiste a, film f, artiste_has_film m where a.id_artiste = m.artiste_id_artiste AND f.id_film = m.film_id_film AND f.id_film = ? AND a.id_artiste NOT IN (SELECT artiste_id_artiste FROM film)');
+        $req->execute([$movieID]);
+        return $req->fetchAll();
     }
 
-    public function getMovieDetails($id) {
+    /**
+     * @param $movieID int ID of a movie
+     * @return mixed
+     */
+    public function getMovieDetails($movieID) {
       $req = $this->pdo->prepare('SELECT * FROM film WHERE id_film = ?');
-      $req->execute([$id]);
+      $req->execute([$movieID]);
       return $req->fetch();
   }
 
-    public function getAllMovies() {
-      $req = $this->pdo->prepare(
-        'SELECT * FROM film'
-      );
-      $req->execute();
-      return $req->fetchAll();
+    /**
+     * @return array All data for all movies
+     */
+    public function getAllMoviesData()
+    {
+        $req = $this->pdo->prepare(
+            'SELECT * FROM film'
+        );
+        $req->execute();
+        return $req->fetchAll();
     }
 
     public function getAllDirectors() {
