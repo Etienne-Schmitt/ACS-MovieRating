@@ -16,12 +16,12 @@ class Genre extends BDDConnect
         return $req->fetchAll();
     }
 
-    public function insertGenre($genre){
+    public function insertGenre($id_genre,$genre){
         $sql = "INSERT INTO movie_genres(genre) values (:genre)";
         $req = self::$_pdo->prepare($sql);
-
         $req->bindParam(':genre', $genre);
         return $req->execute();
+      
     }
     
     public function getGenre()
@@ -52,7 +52,6 @@ class Genre extends BDDConnect
 
     public function deleteGenre($id_genre)
     {
-        echo "bravo";
         $sql ="DELETE FROM `movie_genres` WHERE `movie_genres`.`id_genre` = $id_genre";
         $req = self::$_pdo->prepare($sql);
     return $req->execute();
