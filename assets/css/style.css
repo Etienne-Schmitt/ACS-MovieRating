@@ -22,3 +22,8 @@ h1 {
   list-style: none;
   display: flex;
 }
+
+.img-size {
+  height: 20em;
+
+}

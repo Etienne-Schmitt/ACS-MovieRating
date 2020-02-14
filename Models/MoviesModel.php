@@ -84,6 +84,6 @@ class MoviesModel extends Model {
       $req = self::$_pdo->prepare(
         'UPDATE film SET titre=:titre, annee_sortie=:annee_sortie, affiche=:affiche, synposis=:sinopsis, genre_id_genre=:genre_id_genre, artiste_id_artiste=:artiste_id_artiste WHERE id_film=:id_film'
       );
-      $req->execute(['titre' => $titre, 'annee_sortie' => $annee_sortie, 'affiche' => $affiche, 'synopsis' => $synopsis, 'genre' => $genre, 'director' => $director]);
+      $req->execute(['id_film' => $id_film, 'titre' => $titre, 'annee_sortie' => $annee_sortie, 'affiche' => $affiche, 'synopsis' => $synopsis, 'genre' => $genre, 'director' => $director]);
     }
 }
