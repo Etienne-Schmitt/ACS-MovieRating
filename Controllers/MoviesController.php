@@ -46,7 +46,7 @@ class MoviesController extends Controller
     {
         $moviesData = $this->dbLink->getAllMoviesData();
         self::$_twig->addGlobal('moviesArray', $moviesData);
-        echo $this->showPage("list.movie.home");
+        echo $this->showPage("Movies/list.movie.home");
 
     }
 
