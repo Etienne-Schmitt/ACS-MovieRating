@@ -1,6 +1,9 @@
 <?php
 
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
@@ -50,5 +53,23 @@ class Controller
             self::$_baseUrl = $config->baseUrl;
         }
         return self::$_baseUrl;
+    }
+
+    /**
+     * @param $page
+     * @return string Rendered HTML page
+     */
+    protected function showPage($page)
+    {
+        try {
+            $template = self::$_twig->load($page);
+            return $template->render();
+        } catch (LoaderError $e) {
+            die('Erreur LoaderError : ' . $e);
+        } catch (RuntimeError $e) {
+            die('Erreur RuntimeError : ' . $e);
+        } catch (SyntaxError $e) {
+            die('Erreur SyntaxError : ' . $e);
+        }
     }
 }
