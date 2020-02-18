@@ -1,60 +1,38 @@
 <?php
 
-class GenreController extends Controller {
+/**
+ * Class GenreController
+ */
+class GenreController extends Controller
+{
+
+    /** @var Genre Instance of Genre Class */
+    private $genre;
 
     public function __construct()
     {
         parent::__construct();
-        $this->movieGenre = new Genre();
+        $this->genre = new Genre();
     }
 
-    public function showGenre() 
+    public function showGenre()
     {
-        $result = $this->movieGenre->getAllGenres();
-        $pageTwig = 'genre/genre.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render(["result" => $result]);
-    }
-   
-    public function AddGenre() 
-    {
-        $pageTwig = 'genre/addGenre.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render();
-        
-    }
-    public function insertNewGenre() 
-    
-    {
-        $genre = $_POST['genre'];
-        $this->movieGenre->insertGenre($id_genre,$genre);
-        header('Location: http://localhost/MovieFilm/genre/add');
-        exit;
-    }
-    public function getGenreById($id)
-    {
-        $result = $this->movieGenre->getGenreByName($id);
-        $pageTwig = 'genre/updateGenre.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render(["result" => $result]);
+        $allGenres = self::convertGenreArrayForTwig($this->genre->getAllGenres());
+
+        $pageTwig = 'genre.html.twig';
+
+        self::$_twig->addGlobal("arrayGenres", $allGenres);
+        echo $this->showPage($pageTwig);
     }
 
-    public function updateGenreById($id_genre)
+    public static function convertGenreArrayForTwig($array)
     {
-        $genre = $_POST['genre'];
-        $this->movieGenre->updateGenre($id_genre, $genre);
-        //header('Location: ' . self::$_baseUrl . '/genre');
-        $uri = self::$_baseUrl;
-        //header("Location: $uri/admin/genre/update");
-        header("Location: $uri/genre");
-        exit ;
-    }
+        $arrayEnd = [];
 
-    public function deleteGenreById($id)
-    {
-        $this->movieGenre->deleteGenre($id);
-        $uri = self::$_baseUrl;
-        header("Location: $uri/genre");
-        exit ;
+        for ($i = 0; $i < count($array); $i++) {
+            $arrayEnd[$array[$i]['id_genre']] = $array[$i]['genre'];
+        }
+
+        return $arrayEnd;
     }
-} 
+}
