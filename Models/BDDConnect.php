@@ -1,22 +1,34 @@
 <?php
 
-abstract class BDDConnect {
-
+/**
+ * Class BDDConnect
+ */
+abstract class BDDConnect
+{
     private const CONFIG = __DIR__ . '/../core/config.json';
-    protected static $_pdo = null; 
     private const OPTIONS = [
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ];
 
-    protected static function getPdo() {
+    /**
+     * PDO Object initiated by fetPdo() or null if error/not initialized
+     * @var PDO|null
+     */
+    protected static $_pdo = null;
+
+    /**
+     * Return a static PDO object for all it's children classes
+     * @return PDO|null $_pdo
+     */
+    protected static function getPdo()
+    {
         if (is_null(self::$_pdo)) {
             $config = json_decode(file_get_contents(self::CONFIG));
-            try{
-                //$bdd = new PDO('mysql:host=localhost;dbname=mydb;','root','');
-                self::$_pdo = new PDO($config->dsn, $config->user, $config->psswd,self::OPTIONS);
-             }catch(PDOException $e){
-                die('Erreur : '.$e->getMessage());
-             }
+            try {
+                self::$_pdo = new PDO($config->dsn, $config->user, $config->psswd, self::OPTIONS);
+            } catch (PDOException $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
         }
         return self::$_pdo;
     }
