@@ -1,56 +1,43 @@
 <?php
-class ArtistController extends Controller {
+
+/**
+ * Class ArtistController
+ */
+class ArtistController extends Controller
+{
+    /** @var Artist Instance of Artist Class */
+    private $artist;
+
+    /**
+     * ArtistController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
-        $this->Artist = new Artist();
+        $this->artist = new Artist();
     }
 
-    public function showAllArtists() {
-        $result = $this->Artist->getAllArtists();
-      
-        $pageTwig = 'artist/artist.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render(["result" => $result]);
-    }
-    public function AddArtist() {
-        $pageTwig = 'artist/addArtist.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render();
-    }
-    public function insertNewArtist() {
-        $lastname_artist = $_POST['lastname_artist'];
-        $firstname_artist = $_POST['firstname_artist'];
-        $birth_date = $_POST['birth_date'];
-        $this->Artist ->insertArtist($lastname_artist, $firstname_artist, $birth_date);
-        header('Location: http://localhost/MovieFilm/artist/add');
-        exit;
-
-    }
-    public function getArtistById($id)
+    public function showArtist()
     {
-        $result = $this->Artist->getAllArtists($id);
-        $pageTwig = 'genre/updateArtist.html.twig';
-        $template = self::$_twig->load($pageTwig);
-        echo $template->render(["result" => $result]);
+        $allArtists = self::convertArtistArrayForTwig($this->artist->getAllArtists());
+        $pageTwig = 'artist.html.twig';
+        self::$_twig->addGlobal("arrayArtists", $allArtists);
+        echo $this->showPage($pageTwig);
     }
 
-    public function updateArtistById($id_artist)
+    public static function convertArtistArrayForTwig($array)
     {
-        $lastname_artist = $_POST['lastname_artist'];
-        $firstname_artist = $_POST['firstname_artist'];
-        $birth_date = $_POST['birth_date'];
-        $this->Artist->updateArtist($lastname_artist, $firstname_artist, $birth_date);
-        $uri= self::$_baseUrl;
-        header("Location:$uri/artist");
+        $arrayEnd = [];
 
+        for ($i = 0; $i < count($array); $i++) {
+            $arrayEnd[$array[$i]['id_artist']] = [
+                'firstname' => $array[$i]['firstname_artist'],
+                'lastname' => $array[$i]['lastname_artist'],
+                'birthdate' => $array[$i]['birth_date']
+            ];
+        }
+
+        return $arrayEnd;
     }
 
-    public function deleteArtistById($id)
-    {
-        $this->movieGenre->deleteArtist($id);
-        $uri = self::$_baseUrl;
-        header("Location: $uri/artist");
-        exit ;
-    }
 }
