@@ -6,7 +6,24 @@
   background-color: lightblue;
 }
 
-.img-size {
-  height: 20em;
+@media (min-width: 1200px) {
 
+  .img-size {
+    height: 370px;
+  }
+
+  .card-size {
+    height: 90px;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .img-size {
+    height: 250px;
+  }
+
+  .card-size {
+    height: 90px;
+  }
 }

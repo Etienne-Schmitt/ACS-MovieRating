@@ -10,7 +10,7 @@ class ArtistsDbConnect extends dbConnect
   public function getAllArtists()
   {
     $req = $this->pdo->prepare(
-      'SELECT * FROM artiste'
+      'SELECT * FROM artists'
     );
     $req->execute();
     return $req->fetchAll();

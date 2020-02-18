@@ -17,10 +17,10 @@
       {% for exemple in getAllMovies %}
       <div class="col-md-3">
         <div class="card text-white bg-dark mb-4">
-          <img src='/Uploads/posters/{{ exemple.affiche }}' class="card-img b-0">
+          <img src='/Uploads/posters/{{ exemple.poster }}' class="card-img b-0">
           <div class="card-body">
-            <h5 class="card-title">{{ exemple.titre }}</h5>
-            <a href="{{baseUrl}}/movies/updatemovies/{{exemple.id_film}}" class="btn btn-info">Update Movie</a>
+            <h5 class="card-title">{{ exemple.poster }}</h5>
+            <a href="{{baseUrl}}/movies/updatemovies/{{exemple.movie_id}}" class="btn btn-info">Update Movie</a>
           </div>
         </div>
       </div>

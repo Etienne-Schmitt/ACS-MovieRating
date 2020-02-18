@@ -13,11 +13,11 @@
                 {% for movie in moviesArray %}
                     <div class="col-md-3">
                         <div class="card text-white bg-dark mb-4">
-                            <a href="{{ baseUrl }}/show/{{ movie.id_film }}">
-                                <img src='{{ baseUrl }}/Uploads/posters/{{ movie.poster }}' class="card-img b-0" alt="Poster {{ movie.poster }}">
+                            <a href="{{ baseUrl }}/show/{{ movie.movie_id }}">
+                                <img src='{{ baseUrl }}/Uploads/posters/{{ movie.poster }}' class="card-img img-size" alt="Poster {{ movie.poster }}">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{ movie.titre }}</h5>
+                                <h5 class="card-title">{{ movie.title }}</h5>
                             </div>
                         </div>
                     </div>

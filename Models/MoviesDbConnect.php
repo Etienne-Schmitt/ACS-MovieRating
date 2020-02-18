@@ -23,7 +23,7 @@ class MoviesDbConnect extends dbConnect
      * @return mixed
      */
     public function getMovieDetails($movieID) {
-      $req = $this->pdo->prepare('SELECT * FROM film WHERE id_film = ?');
+      $req = $this->pdo->prepare('SELECT * FROM movies WHERE movie_id = ?');
       $req->execute([$movieID]);
       return $req->fetch();
   }
@@ -34,7 +34,7 @@ class MoviesDbConnect extends dbConnect
     public function getAllMoviesData()
     {
         $req = $this->pdo->prepare(
-            'SELECT * FROM film'
+            'SELECT * FROM movies'
         );
         $req->execute();
         return $req->fetchAll();
@@ -42,7 +42,7 @@ class MoviesDbConnect extends dbConnect
 
     public function getAllDirectors() {
       $req = $this->pdo->prepare(
-        'SELECT DISTINCT id_artiste, nom_artiste, prenom_artiste FROM artiste a, film f WHERE a.id_artiste = f.artiste_id_artiste');
+        'SELECT DISTINCT artist_id, lastname_artist, firstname_artist FROM artists a, movies m WHERE a.artist_id = m.director_id');
       $req->execute();
       return $req->fetchAll();
     }
