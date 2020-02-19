@@ -28,7 +28,7 @@ class MovieController extends Controller {
 
         for ($i = 0; $i < count($array); $i++) {
             $arrayEnd[$array[$i]['movie_id']] = [
-                'titre' => $array[$i]['title'],
+                'title' => $array[$i]['title'],
                 'releaseYear' => $array[$i]['release_year'],
                 'poster' => $array[$i]['poster'],
                 'synopsis' => $array[$i]['synopsis']
