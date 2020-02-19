@@ -3,22 +3,27 @@
 {% block title %}Movie list{% endblock %}
 
 {% block body %}
-    <div class="container text-center">
-        <h2 class="">Movie list</h2>
-        <div class="card text-dark" style="width: 18rem;">
-        {% for movie in arrayMovies %}
-            <img class="card-img-top" src="{{ baseUrl }}/Uploads/posters/{{ movie.poster }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ movie.title }}</h5>
-                <p class="card-text">{{ movie.synopsis }}</p>
-            </div>
-
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ movie.releaseYear }}</li>
-            </ul>
-        {% endfor %}
-        </div>
+    
+<div class="container text-center mb ">
+<h2>Movie list</h2>
+   <div class="row pt-5">     
+ {% for movie in arrayMovies %}
+ <div class="col-md-3">
+<div class="card text-white text-center bg-dark mb-4">
+  <img class="card-img-top img-responsive" src="{{ baseUrl }}/Uploads/posters/{{ movie.poster }}" >
+    <div class="card-body">
+        <p class="card-text bg-dark text-white ">{{ movie.title}}</p>
     </div>
+  <ul class="list-group list-group-flush">
+   
+     <li class="list-group-item bg-dark text-white">{{ movie.releaseYear }}</li>
+    <li class="list-group-item bg-dark text-white text-uppercase"><a href="#">READ MORE...</a></li>
+  </ul>  
+</div>
+</div>
+ {% endfor %}
+ </div>
+ </div> 
 {% endblock %}
 
 {% block javascripts %}
