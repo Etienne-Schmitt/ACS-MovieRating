@@ -1,15 +1,13 @@
 <?php
 require_once 'vendor/autoload.php';
 
-if ( isset($_GET['uri']) && ($_GET['uri'] !== "")) {
+if (isset($_GET['uri']) && ($_GET['uri'] !== "")) {
     $mainRouter = new Router($_GET['uri']);
-}
-else {
+} else {
     $mainRouter = new Router("/");
 }
 
-$mainRouter->addRouteGET('/admin/artist/get/:id', 'Admin.getArtistData');
-$mainRouter->addRouteGET('/admin/movie/get/:id', 'Admin.getMovieData');
+header('Cache-Control: no-cache');
 
 $mainRouter->addRouteGET('/admin/genre/add', 'Admin.showAddGenre');
 $mainRouter->addRouteGET('/admin/genre/edit', 'Admin.showEditGenre');
