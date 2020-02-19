@@ -24,8 +24,8 @@ $mainRouter->addRouteGET('/', 'Home.showHome');
 
 $mainRouter->addRouteGET('/genre', 'Genre.showGenre');
  $mainRouter->addRouteGET('/artist', 'Artist.showArtist');
-$mainRouter->addRouteGET('/director', 'Home.showDirector');
-
+$mainRouter->addRouteGET('/director', 'Director.showDirector');
+$mainRouter->addRouteGET('/movie', 'Movie.showMovie');
 
 try {
     $mainRouter->startRouter();
