@@ -7,6 +7,31 @@ body {
       -o-background-size: cover;
  color:#fff;
   }
+
+  a:hover{
+
+    color:#f1c40f;
+  }
   .color-dark {
-    background-color: #000!important
+      background-color: #000!important
 }
+.card-img-top {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+  }
+.mt{
+
+    margin-top: 20%;
+}
+.mb{
+  margin-bottom: 5%;
+}
+.title {
+  
+    position: relative;
+    font-family: Baskerville, "EB Garamond", serif;
+    font-size: 60px;
+    color: white;
+}
+
