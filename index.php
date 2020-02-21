@@ -28,7 +28,7 @@ $mainRouter->addRouteGET('/admin/movie/delete', 'AdminMovie.showDelMovie');
 $mainRouter->addRouteGET('/admin', 'AdminHome.showAdmin');
 $mainRouter->addRouteGET('/genre', 'Genre.showGenre');
 $mainRouter->addRouteGET('/artist', 'Artist.showArtist');
-$mainRouter->addRouteGET('/director', 'Home.showDirector');
+$mainRouter->addRouteGET('/director', 'Director.showDirector');
 $mainRouter->addRouteGET('/movie', 'Movie.showMovie');
 
 //// POST
