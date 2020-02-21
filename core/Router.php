@@ -41,13 +41,11 @@ class Router
         return $this->addRoute($path, $callable, $name, 'POST');
     }
 
-    /**
-     * @param $path
-     * @param $callable
-     * @param $name
-     * @param $method
-     * @return Route
-     */
+    public function error404GET(string $path)
+    {
+        return $this->addRoute($path, "NotFound.showNotFound", null, "GET");
+    }
+
     private function addRoute($path, $callable, $name, $method)
     {
         $route = new Route($path, $callable);
@@ -68,7 +66,7 @@ class Router
             throw new RouterException("REQUEST_METHOD does not exist"); //405 ??
         }
 
-        /** @var Route $route object from Class Route. Assigned in addRoute() */
+        /** @var Route $route object from Class Route. Assigned in $this->addRoute() */
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
             if ($route->match($this->uri)) {
                 return $route->call();

@@ -30,6 +30,9 @@ $mainRouter->addRouteGET('/genre', 'Genre.showGenre');
 $mainRouter->addRouteGET('/artist', 'Artist.showArtist');
 $mainRouter->addRouteGET('/director', 'Director.showDirector');
 $mainRouter->addRouteGET('/movie', 'Movie.showMovie');
+$mainRouter->addRouteGET('/', 'Home.showHome');
+$mainRouter->error404GET(":file");
+
 
 //// POST
 $mainRouter->addRoutePOST('/admin/genre/add', 'AdminGenre.');
