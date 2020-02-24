@@ -28,7 +28,7 @@ class AdminGenre extends Genre
         return $req->execute();
     }
 
-    public function getGenrebyId($id_genre)
+    public function getGenreById($id_genre)
     {
         $sql = "SELECT genre FROM movie_genres WHERE id_genre = :id";
         $req = self::$_pdo->prepare($sql);

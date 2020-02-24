@@ -27,7 +27,7 @@ abstract class BDDConnect
             try {
                 self::$_pdo = new PDO($config->dsn, $config->user, $config->psswd, self::OPTIONS);
             } catch (PDOException $e) {
-                die('Erreur : ' . $e->getMessage());
+                die('Error : ' . $e->getMessage());
             }
         }
         return self::$_pdo;

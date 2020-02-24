@@ -65,11 +65,11 @@ class Controller
             $template = self::$_twig->load($page);
             return $template->render();
         } catch (LoaderError $e) {
-            die('Erreur LoaderError : ' . $e);
+            die('Error LoaderError : ' . $e);
         } catch (RuntimeError $e) {
-            die('Erreur RuntimeError : ' . $e);
+            die('Error RuntimeError : ' . $e);
         } catch (SyntaxError $e) {
-            die('Erreur SyntaxError : ' . $e);
+            die('Error SyntaxError : ' . $e);
         }
     }
 }

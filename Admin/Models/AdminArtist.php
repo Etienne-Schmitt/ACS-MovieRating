@@ -56,7 +56,7 @@ class AdminArtist extends Artist
     /**
      * Get all data for one artist by ID
      * @param $id_artist
-     * @return string|false Retrun <b>String</b> of the elements or <b>FALSE</b> on failure
+     * @return string|false Return <b>String</b> of the elements or <b>FALSE</b> on failure
      */
     public function getArtistById($id_artist)
     {
