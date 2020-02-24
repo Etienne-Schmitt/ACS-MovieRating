@@ -68,7 +68,6 @@ class AdminUser extends BDDConnect
         return $req->fetch();
     }
 
-
     public function addUser($email, $name, $password, $saltedPassword)
     {
         $sql = "INSERT INTO user(email, name, password, salted_password) VALUES (:mail, :name, :plainPassword, :saltedPassword)";
