@@ -63,6 +63,10 @@ $mainRouter->addRoutePOST('/admin/login', 'AdminHome.postLogIn');
 try {
     $mainRouter->startRouter();
 } catch (RouterException $e) {
+    if (DEBUG) {
+        die('Error when starting the router: ' . $e->getMessage());
+    }
+    die();
 }
 
 
