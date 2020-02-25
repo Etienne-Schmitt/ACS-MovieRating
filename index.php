@@ -1,5 +1,12 @@
 <?php
 require_once 'vendor/autoload.php';
+session_start();
+
+/**
+ * <b>TRUE</b> for debug <b>FALSE</b> for none
+ * @var bool DEBUG
+ */
+define('DEBUG', true);
 
 if (isset($_GET['uri']) && ($_GET['uri'] !== "")) {
     $mainRouter = new Router($_GET['uri']);
