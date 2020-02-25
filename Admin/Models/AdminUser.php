@@ -27,7 +27,8 @@ class AdminUser extends BDDConnect
     {
         $sql = "SELECT email FROM user WHERE user_id = :id";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam('id', $userID);
+        $req->bindParam(':id', $userID);
+        $req->execute();
         return $req->fetch();
     }
 
@@ -39,7 +40,8 @@ class AdminUser extends BDDConnect
     {
         $sql = "SELECT name FROM user WHERE user_id = :id";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam('id', $userID);
+        $req->bindParam(':id', $userID);
+        $req->execute();
         return $req->fetch();
     }
 
@@ -52,8 +54,9 @@ class AdminUser extends BDDConnect
     {
         $sql = "SELECT password FROM user WHERE user_id = :id";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam('id', $userID);
-        return $req->fetch();
+        $req->bindParam(':id', $userID);
+        $req->execute();
+        return $req->fetch()['password'];
     }
 
     /**
@@ -64,18 +67,19 @@ class AdminUser extends BDDConnect
     {
         $sql = "SELECT salted_password FROM user WHERE user_id = :id";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam('id', $userID);
-        return $req->fetch();
+        $req->bindParam(':id', $userID);
+        $req->execute();
+        return $req->fetch()['salted_password'];
     }
 
     public function addUser($email, $name, $password, $saltedPassword)
     {
         $sql = "INSERT INTO user(email, name, password, salted_password) VALUES (:mail, :name, :plainPassword, :saltedPassword)";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam("mail", $email);
-        $req->bindParam("name", $name);
-        $req->bindParam("plainPassword", $password);
-        $req->bindParam("saltedPassword", $saltedPassword);
+        $req->bindParam(":mail", $email);
+        $req->bindParam(":name", $name);
+        $req->bindParam(":plainPassword", $password);
+        $req->bindParam(":saltedPassword", $saltedPassword);
         return $req->execute();
     }
 
@@ -83,11 +87,11 @@ class AdminUser extends BDDConnect
     {
         $sql = "UPDATE user SET email = :mail, name = :name, password = :plainPassword, salted_password = :saltedPassword WHERE user_id = :id";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam("id", $userID);
-        $req->bindParam("mail", $email);
-        $req->bindParam("name", $name);
-        $req->bindParam("plainPassword", $password);
-        $req->bindParam("saltedPassword", $saltedPassword);
+        $req->bindParam(":id", $userID);
+        $req->bindParam(":mail", $email);
+        $req->bindParam(":name", $name);
+        $req->bindParam(":plainPassword", $password);
+        $req->bindParam(":saltedPassword", $saltedPassword);
         return $req->execute();
     }
 
@@ -95,7 +99,7 @@ class AdminUser extends BDDConnect
     {
         $sql = "DELETE FROM user WHERE user_id= ':id' ";
         $req = self::$_pdo->prepare($sql);
-        $req->bindParam("id", $userID);
+        $req->bindParam(":id", $userID);
         return $req->execute();
     }
 }

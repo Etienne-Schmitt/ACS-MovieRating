@@ -33,7 +33,7 @@ class AdminMovie extends Movie
 
     public function deleteMovie($movie_id)
     {
-        $sql = "DELETE FROM movies WHERE movie_id= ':id' ";
+        $sql = "DELETE FROM movies WHERE movie_id= :id ";
         $req = self::$_pdo->prepare($sql);
         $req->bindParam(':id', $movie_id);
         return $req->execute();
@@ -44,6 +44,7 @@ class AdminMovie extends Movie
         $sql = "SELECT title, release_year, poster, synopsis, genre_id, director_id FROM movies WHERE movie_id = :id";
         $req = self::$_pdo->prepare($sql);
         $req->bindParam(':id', $movie_id);
+        $req->execute();
         return $req->fetch();
     }
 }

@@ -30,7 +30,7 @@ class AdminArtist extends Artist
      */
     public function updateArtist($id_artist ,$lastname, $firstname, $birthDate)
     {
-        $sql = "UPDATE artists SET lastname_artist=':lastname', firstname_artist=':firstname', birth_date=':birthDate' WHERE id_artist= :id_artist";
+        $sql = "UPDATE artists SET lastname_artist=:lastname, firstname_artist=:firstname, birth_date=:birthDate WHERE id_artist= :id_artist";
         $req = self::$_pdo->prepare($sql);
         $req->bindParam(':id_artist', $id_artist);
         $req->bindParam(':lastname', $lastname);
@@ -47,7 +47,7 @@ class AdminArtist extends Artist
      */
     public function deleteArtist($id_artist)
     {
-        $sql = "DELETE FROM artists WHERE id_artist= ':id' ";
+        $sql = "DELETE FROM artists WHERE id_artist= :id ";
         $req = self::$_pdo->prepare($sql);
         $req->bindParam(':id', $id_artist);
         return $req->execute();
