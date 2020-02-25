@@ -20,6 +20,30 @@ class AdminUser extends BDDConnect
     }
 
     /**
+     * @param $userMail
+     * @return bool <b>TRUE</b> on sucess, <b>FALSE</b> on failure.
+     */
+    public function emailExist($userMail) {
+        $sql = "SELECT true FROM user WHERE email = :mail";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(':mail', $userMail);
+
+        $req->execute();
+
+        return (bool) $req->fetch();
+    }
+
+    public function getUserID($email)
+    {
+        $sql = "SELECT user_id FROM user WHERE email = :mail";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(':mail', $email);
+        $req->execute();
+        return $req->fetch()['user_id'];
+    }
+
+
+    /**
      * @param $userID
      * @return string|false
      */

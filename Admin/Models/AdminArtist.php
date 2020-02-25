@@ -66,4 +66,27 @@ class AdminArtist extends Artist
         return $req->fetch();
     }
 
+    public function artistExist($id_artist)
+    {
+        $sql = "SELECT true FROM artists WHERE id_artist = :id";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(':id', $id_artist);
+        $req->execute();
+        return (bool) $req->fetch();
+    }
+
+    public function getArtistId($name)
+    {
+        $sql =
+            "SELECT id_artist " .
+            "FROM artists " .
+            "WHERE " .
+            "CONCAT(lastname_artist, ' ', firstname_artist, ' - ', birth_date) " .
+            "LIKE :name";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(":name", $name);
+        $req->execute();
+        return $req->fetch()['id_artist'];
+    }
+
 }

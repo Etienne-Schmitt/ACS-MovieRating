@@ -45,4 +45,13 @@ class AdminGenre extends Genre
         $req->execute();
         return $req->fetch();
     }
+
+    public function genreExist($id)
+    {
+        $sql = "SELECT true FROM movie_genres WHERE id_genre = :id";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(':id', $id);
+        $req->execute();
+        return (bool) $req->fetch();
+    }
 }

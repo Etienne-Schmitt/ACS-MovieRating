@@ -47,4 +47,28 @@ class AdminMovie extends Movie
         $req->execute();
         return $req->fetch();
     }
+
+    public function movieExist($id)
+    {
+        $sql = "SELECT true FROM movies WHERE movie_id = :id";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(':id', $id);
+        $req->execute();
+        return (bool) $req->fetch();
+    }
+
+    public function getMovieId($name)
+    {
+        $sql =
+            "SELECT movie_id " .
+            "FROM movies " .
+            "WHERE " .
+            "CONCAT(title, ' - ', release_year) " .
+            "LIKE :name";
+        $req = self::$_pdo->prepare($sql);
+        $req->bindParam(":name", $name);
+        $req->execute();
+        var_dump($req->fetch());
+        return $req->fetch()['movie_id'];
+    }
 }
