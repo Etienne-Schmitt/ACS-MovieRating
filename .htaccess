@@ -13,7 +13,7 @@ DirectorySlash Off
     RewriteCond %{REQUEST_FILENAME} !-d [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_FILENAME} !-l
-    RewriteRule ^(.*)$ /index.php?uri=$1 [L,NC]
+    RewriteRule ^(.*)$ index.php?uri=$1 [L,NC]
 </IfModule>
 
 

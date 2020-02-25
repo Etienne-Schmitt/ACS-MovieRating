@@ -1,4 +1,5 @@
 <?php
+
 require_once 'vendor/autoload.php';
 
 if (isset($_GET['uri']) && ($_GET['uri'] !== "")) {
@@ -30,6 +31,9 @@ $mainRouter->addRouteGET('/genre', 'Genre.showGenre');
 $mainRouter->addRouteGET('/artist', 'Artist.showArtist');
 $mainRouter->addRouteGET('/director', 'Director.showDirector');
 $mainRouter->addRouteGET('/movie', 'Movie.showMovie');
+
+$mainRouter->addRouteGET('/movie/:id', "Movie.showSpecificMovie");
+
 $mainRouter->addRouteGET('/', 'Home.showHome');
 $mainRouter->error404GET(":file");
 

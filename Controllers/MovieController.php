@@ -38,6 +38,22 @@ class MovieController extends Controller {
         return $arrayEnd;
     }
 
+    public function showSpecificMovie(int $id) {
 
+      $actor = new Artist();
+
+      $actorsDetails = ArtistController::convertArtistArrayForTwig($actor->getActorsDetails($id));
+      $movieDetails = self::convertMovieArrayForTwig($this->movie->getMovieDetails($id));
+      $pageTwig = 'specificMovie.html.twig';
+      self::$_twig->addGlobal("actorsDetails", $actorsDetails);
+      self::$_twig->addGlobal("movieDetails", $movieDetails);
+
+      var_dump($actor->getActorsDetails($id));
+
+      //var_dump($actorsDetails);
+      //var_dump($movieDetails);
+
+      //echo $this->showPage($pageTwig);
+    }
 
 }

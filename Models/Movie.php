@@ -17,5 +17,12 @@ class Movie extends BDDConnect {
         $req->execute();
         return $req->fetchAll();
     }
+
+    public function getMovieDetails($id) {
+      $sql = 'SELECT * FROM movies WHERE movie_id = ?';
+      $req = self::$_pdo->prepare($sql);
+      $req->execute([$id]);
+      return $req->fetch();
+  }
 }
 
