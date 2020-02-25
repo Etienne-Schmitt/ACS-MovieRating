@@ -17,15 +17,24 @@ body {
 }
 .card-img-top {
     width: 100%;
-    height: 40vh;
+    height: 42vh;
     object-fit: cover;
   }
 .mt{
 
     margin-top: 20%;
 }
+.mtop{
+
+  margin-top:12%;
+}
+.mtop2{
+  margin-top:5%;
+}
+
+}  
 .mb{
-  margin-bottom: 5%;
+  margin-bottom: 6%;
 }
 .title {
   
