@@ -63,6 +63,7 @@ class AdminArtist extends Artist
         $sql = "SELECT firstname_artist, lastname_artist, birth_date FROM artists WHERE id_artist = :id";
         $req = self::$_pdo->prepare($sql);
         $req->bindParam(':id', $id_artist);
+        $req->execute();
         return $req->fetch();
     }
 
