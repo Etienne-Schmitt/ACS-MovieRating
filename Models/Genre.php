@@ -14,4 +14,15 @@ class Genre extends BDDConnect
         $req->execute();
         return $req->fetchAll();
     }
+
+    public static function convertGenreArrayForTwig($array)
+    {
+        $arrayEnd = [];
+
+        for ($i = 0; $i < count($array); $i++) {
+            $arrayEnd[$array[$i]['id_genre']] = $array[$i]['genre'];
+        }
+
+        return $arrayEnd;
+    }
 }

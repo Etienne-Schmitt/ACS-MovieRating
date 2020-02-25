@@ -19,25 +19,13 @@ class ArtistController extends Controller
 
     public function showArtist()
     {
-        $allArtists = self::convertArtistArrayForTwig($this->artist->getAllArtists());
+        $allArtists = Artist::convertArtistArrayForTwig($this->artist->getAllArtists());
         $pageTwig = 'artist.html.twig';
         self::$_twig->addGlobal("arrayArtists", $allArtists);
         echo $this->showPage($pageTwig);
     }
 
-    public static function convertArtistArrayForTwig($array)
-    {
-        $arrayEnd = [];
 
-        for ($i = 0; $i < count($array); $i++) {
-            $arrayEnd[$array[$i]['id_artist']] = [
-                'firstname' => $array[$i]['firstname_artist'],
-                'lastname' => $array[$i]['lastname_artist'],
-                'birthdate' => $array[$i]['birth_date']
-            ];
-        }
 
-        return $arrayEnd;
-    }
 
 }

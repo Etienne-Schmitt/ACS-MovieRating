@@ -16,27 +16,12 @@ class MovieController extends Controller {
 
     public function showMovie()
     {
-        $allMovies = self::convertMovieArrayForTwig($this->movie->getAllMovies());
+        $allMovies = Movie::convertMovieArrayForTwig($this->movie->getAllMovies());
         $pageTwig = 'movie.html.twig';
         self::$_twig->addGlobal("arrayMovies", $allMovies);
         echo $this->showPage($pageTwig);
     }
 
-    public static function convertMovieArrayForTwig($array)
-    {
-        $arrayEnd = [];
-
-        for ($i = 0; $i < count($array); $i++) {
-            $arrayEnd[$array[$i]['movie_id']] = [
-                'title' => $array[$i]['title'],
-                'releaseYear' => $array[$i]['release_year'],
-                'poster' => $array[$i]['poster'],
-                'synopsis' => $array[$i]['synopsis']
-            ];
-        }
-
-        return $arrayEnd;
-    }
 
 
 

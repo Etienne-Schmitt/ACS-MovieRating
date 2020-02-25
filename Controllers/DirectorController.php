@@ -16,7 +16,7 @@ class DirectorController extends Controller
 
     public function showDirector()
     {
-        $allDirectors = ArtistController::convertArtistArrayForTwig($this->director->getAllDirectors());
+        $allDirectors = Artist::convertArtistArrayForTwig($this->director->getAllDirectors());
         $pageTwig = 'director.html.twig';
         self::$_twig->addGlobal("arrayDirectors", $allDirectors);
         echo $this->showPage($pageTwig);
