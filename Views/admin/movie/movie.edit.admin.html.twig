@@ -8,21 +8,18 @@
 {% endblock %}
 
 {% block body %}
-    {% set arrayArtist = {1: ['Kubrick', 'Stanley', 1928], 2: ['Hayao', 'Miyazaki', 1941], 3: ['Jean-Pierre', 'Michel', 1985] } %}
-    {% set arrayMovie = {1: ["The Wind Rises", 2012], 2: ["2001: A Space Odyssey", 1968], 3: ["The Imitation Game", 2014] } %}
-    {% set arrayGenre = {1: "Science-fiction", 2: "Action", 3: "Comedy", 4: "Romance", 5:"Historical fiction", 6: "Animation"} %}
     <div class="container mt-5" id="form-container">
-        <form action="{{ baseUrl }}/admin/movie/edit" method="post" id="form-data" class="pb-3">
+        <form action="{{ baseUrl }}/admin/movie/edit" method="post" id="form-data" class="pb-3" enctype="multipart/form-data">
 
             <div class="input-group">
                 <div class="input-group-prepend form-group">
-                    <label class="input-group-text" for="movie-edit-old">Movie:</label>
+                    <label class="input-group-text" for="movie-title-old">Movie:</label>
                 </div>
-                <select class="custom-select" name="movie-edit-old" id="movie-edit-old">
+                <select class="custom-select" name="movie-title-old" id="movie-title-old">
                     <option value="">--Please choose a movie--</option>
-                    {% if arrayMovie is defined %}
-                        {% for id, movie in arrayMovie %}
-                            <option name="{{ id }}" id="{{ id }}">{{ movie.1 }} - {{ movie.0 }}</option>
+                    {% if arrayMovies is defined %}
+                        {% for id, movie in arrayMovies %}
+                            <option name="{{ id }}" value="{{ id }}">{{ movie.title }} - {{ movie.releaseYear }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -30,21 +27,21 @@
 
 
             <div class="form-group hidden">
-                <label for="movie-title-edit">Title:</label>
-                <input type="text" name="movie-title-edit" id="movie-title-edit" class="form-control" autofocus
+                <label for="movie-title-new">Title:</label>
+                <input type="text" name="movie-title-new" id="movie-title-new" class="form-control" autofocus
                        required>
             </div>
 
 
             <div class="input-group pb-3 hidden" id="genre-text">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="movie-genre-edit">Genre:</label>
+                    <label class="input-group-text" for="movie-genre-new">Genre:</label>
                 </div>
-                <select class="custom-select hidden" name="movie-genre-edit" id="movie-genre-edit">
+                <select class="custom-select hidden" name="movie-genre-new" id="movie-genre-new">
                     <option value="">--Please choose a genre--</option>
-                    {% if arrayGenre is defined %}
-                        {% for id, genre in arrayGenre %}
-                            <option name="{{ id }}" id="{{ id }}">{{ genre }}</option>
+                    {% if arrayGenres is defined %}
+                        {% for id, genre in arrayGenres %}
+                            <option name="{{ id }}" value="{{ id }}">{{ genre }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -53,14 +50,14 @@
 
             <div class="input-group pb-3 hidden" id="genre-text">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="movie-director-edit">Director:</label>
+                    <label class="input-group-text" for="movie-director-new">Director:</label>
                 </div>
-                <select class="custom-select" name="movie-director-edit" id="movie-director-edit">
+                <select class="custom-select" name="movie-director-new" id="movie-director-new">
                     <option value="">--Please choose an artist--</option>
-                    {% if arrayArtist is defined %}
-                        {% for id, fullName in arrayArtist %}
-                            <option name="{{ id }}" id="{{ id }}">{{ fullName.0 }} {{ fullName.1 }}
-                                - {{ fullName.2 }}</option>
+                    {% if arrayArtists is defined %}
+                        {% for id, artist in arrayArtists %}
+                            <option name="{{ id }}" value="{{ id }}">{{ artist.lastname }} {{ artist.firstname }}
+                                - {{ artist.birthdate }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -68,8 +65,8 @@
 
 
             <div class="form-group hidden">
-                <label for="movie-year-edit">Release year:</label>
-                <input type="number" name="movie-year-edit" id="movie-year-edit" class="form-control" required>
+                <label for="movie-year-new">Release year:</label>
+                <input type="number" name="movie-year-new" id="movie-year-new" class="form-control" required>
             </div>
 
 
@@ -85,18 +82,18 @@
                         <img src="" alt="" id="movie-poster-preview" class="w-50">
                     </div>
                 </div>
-                <label for="file">New Poster:</label>
+                <label for="movie-poster-new">New Poster:</label>
                 <div class="custom-file">
-                    <label for="movie-poster-edit" class="custom-file-label text-left">Movie poster</label>
-                    <input id="movie-poster-edit" name="movie-poster-edit" class="custom-file-input"
+                    <label for="movie-poster-new" class="custom-file-label text-left">Movie poster</label>
+                    <input id="movie-poster-new" name="movie-poster-new" class="custom-file-input"
                            type="file">
                 </div>
             </div>
 
 
             <div class="form-group hidden">
-                <label for="movie-synopsis-edit">Synopsis:</label>
-                <textarea name="movie-synopsis-edit" id="movie-synopsis-edit" class="form-control" rows="5"></textarea>
+                <label for="movie-synopsis-new">Synopsis:</label>
+                <textarea name="movie-synopsis-new" id="movie-synopsis-new" class="form-control" rows="5"></textarea>
             </div>
 
 

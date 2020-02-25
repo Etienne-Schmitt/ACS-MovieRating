@@ -19,9 +19,9 @@
                 </div>
                 <select class="custom-select" name="movie-delete" id="movie-delete">
                     <option value="">--Please choose a movie--</option>
-                    {% if arrayMovie is defined %}
-                        {% for id, movie in arrayMovie %}
-                            <option name="{{ id }}" id="{{ id }}">{{ movie.title }} - {{ movie.year }}</option>
+                    {% if arrayMovies is defined %}
+                        {% for id, movie in arrayMovies %}
+                            <option name="{{ id }}" value="{{ id }}">{{ movie.title }} - {{ movie.releaseYear }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>

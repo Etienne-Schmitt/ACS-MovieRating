@@ -9,7 +9,7 @@
 
 {% block body %}
     <div class="container mt-5" id="form-container">
-        <form action="{{ baseUrl }}/admin/movie/add" method="post" id="form-data" class="pb-3">
+        <form action="{{ baseUrl }}/admin/movie/add" method="post" id="form-data" class="pb-3" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="movie-title-add">Title:</label>
@@ -17,15 +17,15 @@
             </div>
 
 
-            <div class="input-group pb-3" id="genre-text">
+            <div class="input-group pb-3">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="genre-edit-old">Genre:</label>
+                    <label class="input-group-text" for="movie-genre-add">Genre:</label>
                 </div>
-                <select class="custom-select" name="genre-edit-old" id="genre-edit-old">
+                <select class="custom-select" name="movie-genre-add" id="movie-genre-add">
                     <option value="">--Please choose a genre--</option>
-                    {% if arrayGenre is defined %}
-                        {% for id, genre in arrayGenre %}
-                            <option name="{{ id }}" id="{{ id }}">{{ genre }}</option>
+                    {% if arrayGenres is defined %}
+                        {% for id, genre in arrayGenres %}
+                            <option name="{{ id }}" value="{{ id }}">{{ genre }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -34,14 +34,14 @@
 
             <div class="input-group pb-3" id="genre-text">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="director-add">Director:</label>
+                    <label class="input-group-text" for="movie-director-add">Director:</label>
                 </div>
-                <select class="custom-select" name="director-add" id="director-add">
+                <select class="custom-select" name="movie-director-add" id="movie-director-add">
                     <option value="">--Please choose an artist--</option>
-                    {% if arrayArtist is defined %}
-                        {% for id, fullName in arrayArtist %}
-                            <option name="{{ id }}" id="{{ id }}">{{ fullName.0 }} {{ fullName.1 }}
-                                - {{ fullName.2 }}</option>
+                    {% if arrayArtists is defined %}
+                        {% for id, artist in arrayArtists %}
+                            <option name="{{ id }}" value="{{ id }}">{{ artist.lastname }} {{ artist.firstname }}
+                                - {{ artist.birthdate }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -57,9 +57,9 @@
             <div class="form-group">
                 <label for="file">Poster:</label>
                 <div class="custom-file">
-                    <label for="file" class="custom-file-label text-left">Movie poster</label>
-                    <input id="file" required name="file[]" class="custom-file-input"
-                           type="file"><?php $customFormFile = true; ?>
+                    <label for="movie-poster-add" class="custom-file-label text-left">Movie poster</label>
+                    <input id="movie-poster-add" required name="movie-poster-add" class="custom-file-input"
+                           type="file">
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
 
 
             <div id="form-btn-group">
-                <input type="submit" value="Add artist" class="btn btn-primary">
+                <input type="submit" value="Add movie" class="btn btn-primary">
                 <input type="reset" value="Reset" class="btn btn-danger">
             </div>
         </form>

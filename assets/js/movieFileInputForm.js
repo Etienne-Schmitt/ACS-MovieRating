@@ -1,17 +1,17 @@
 const
-    movieSelector = document.getElementById("movie-edit-old"),
+    movieSelector = document.getElementById("movie-title-old"),
     arrayHiddenDiv = Array.from(document.getElementsByClassName("hidden")),
 
-    inputTitle = document.getElementById("movie-title-edit"),
-    inputGenre = document.getElementById("movie-genre-edit"),
-    inputDirector = document.getElementById("movie-director-edit"),
-    inputYear = document.getElementById("movie-year-edit"),
+    inputTitle = document.getElementById("movie-title-new"),
+    inputGenre = document.getElementById("movie-genre-new"),
+    inputDirector = document.getElementById("movie-director-new"),
+    inputYear = document.getElementById("movie-year-new"),
     inputPoster = document.getElementById("movie-poster-preview"),
-    inputSynopsis = document.getElementById("movie-synopsis-edit");
+    inputSynopsis = document.getElementById("movie-synopsis-new");
 
 movieSelector.addEventListener("change", () => {
     let
-        movieSelected = movieSelector.options[movieSelector.selectedIndex].id,
+        movieSelected = movieSelector.options[movieSelector.selectedIndex].value,
         promiseMovie = getDBDataForMovie(movieSelected);
 
 
@@ -50,12 +50,14 @@ function changeValueOfMovieInputs(
     director, year,
     poster, synopsis
 ) {
+
     inputTitle.value = title;
-    inputGenre.selectedIndex = genre;
-    inputDirector.selectedIndex = director;
     inputYear.value = year;
     inputPoster.src = "/Uploads/posters/" + poster;
     inputSynopsis.value = synopsis;
+
+    inputGenre.value = genre;
+    inputDirector.value = director;
 }
 
 /**

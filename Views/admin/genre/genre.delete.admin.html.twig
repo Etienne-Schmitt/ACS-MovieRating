@@ -21,8 +21,8 @@
                 </div>
                 <select class="custom-select" name="genre-delete" id="genre-delete">
                     <option value="">--Please choose a genre--</option>
-                    {% if arrayGenre is defined %}
-                        {% for id, genre in arrayGenre %}
+                    {% if arrayGenres is defined %}
+                        {% for id, genre in arrayGenres %}
                             <option name="{{ id }}" id="{{ id }}">{{ genre }}</option>
                         {% endfor %}
                     {% endif %}

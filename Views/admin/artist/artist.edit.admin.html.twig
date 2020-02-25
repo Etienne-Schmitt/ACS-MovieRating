@@ -16,11 +16,10 @@
                 </div>
                 <select class="custom-select" name="artist-edit-old" id="artist-edit-old">
                     <option value="">--Please choose an artist--</option>
-                    {% set arrayArtist = {0: ['Etienne', 'Schmitt', 1997], 1: ['John', 'Smith', 1990], 2: ['Jean-Pierre', 'Michel', 1985] } %}
-                    {% if arrayArtist is defined %}
-                        {% for id, fullName in arrayArtist %}
-                            <option name="{{ id }}" id="{{ id }}">{{ fullName.0 }} {{ fullName.1 }}
-                                - {{ fullName.2 }}</option>
+                    {% if arrayArtists is defined %}
+                        {% for id, artist in arrayArtists %}
+                            <option name="{{ id }}" id="{{ id }}">{{ artist.lastname }} {{ artist.firstname }}
+                                - {{ artist.birthdate }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
