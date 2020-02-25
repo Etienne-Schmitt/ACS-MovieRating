@@ -4,7 +4,7 @@
 /**
  * Class AdminArtistController
  */
-class AdminArtistController extends AdminHomeController
+class AdminArtistController extends AdminController
 {
     /** @var $artist Artist */
     private $artist;

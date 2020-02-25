@@ -4,7 +4,7 @@
 /**
  * Class AdminGenreController
  */
-class AdminGenreController extends AdminHomeController
+class AdminGenreController extends AdminController
 {
     /** @var $genre Genre */
     private $genre;

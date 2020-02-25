@@ -4,7 +4,7 @@
 /**
  * Class AdminMovieController
  */
-class AdminMovieController extends AdminHomeController
+class AdminMovieController extends AdminController
 {
     /** @var $movie Movie */
     private $movie;

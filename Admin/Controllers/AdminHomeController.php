@@ -3,10 +3,8 @@
 /**
  * Class AdminHomeController
  */
-class AdminHomeController extends Controller
+class AdminHomeController extends AdminController
 {
-    protected $loginState = false;
-
     public function __construct()
     {
         parent::__construct();
