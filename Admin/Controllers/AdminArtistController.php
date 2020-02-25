@@ -6,16 +6,16 @@
  */
 class AdminArtistController extends AdminController
 {
-    /** @var $artist Artist */
-    private $artist;
+    /** @var $adminArtist AdminArtist */
+    private $adminArtist;
     /** @var $arrayArtists array */
     private $arrayArtists;
 
     public function __construct()
     {
         parent::__construct();
-        $this->artist = new Artist();
-        $this->arrayArtists = ArtistController::convertArtistArrayForTwig(($this->artist->getAllArtists()));
+        $this->adminArtist = new AdminArtist();
+        $this->arrayArtists = AdminArtist::convertArtistArrayForTwig(($this->adminArtist->getAllArtists()));
     }
 
     public function showAddArtist()

@@ -6,16 +6,16 @@
  */
 class AdminGenreController extends AdminController
 {
-    /** @var $genre Genre */
-    private $genre;
+    /** @var $adminGenre AdminGenre */
+    private $adminGenre;
     /** @var $arrayGenres array */
     private $arrayGenres;
 
     public function __construct()
     {
         parent::__construct();
-        $this->genre = new Genre();
-        $this->arrayGenres = GenreController::convertGenreArrayForTwig($this->genre->getAllGenres());
+        $this->adminGenre = new AdminGenre();
+        $this->arrayGenres = Genre::convertGenreArrayForTwig($this->adminGenre->getAllGenres());
     }
 
     public function showAddGenre()

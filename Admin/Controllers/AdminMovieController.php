@@ -6,16 +6,32 @@
  */
 class AdminMovieController extends AdminController
 {
-    /** @var $movie Movie */
-    private $movie;
+    const AUTHORIZEDFILESTYPES = [
+        'image/jpeg',
+        'image/png',
+        'image/tiff'
+    ];
+    /** @var $adminMovie AdminMovie */
+    private $adminMovie;
+    private $arrayArtists;
+    /** @var AdminMovie */
+    private $adminGenre;
+    /** @var AdminMovie */
+    private $adminArtist;
+
     /** @var $arrayMovies array */
     private $arrayMovies;
+    private $arrayGenres;
 
     public function __construct()
     {
         parent::__construct();
-        $this->movie = new Movie();
-        $this->arrayMovies = MovieController::convertMovieArrayForTwig($this->movie->getAllMovies());
+        $this->adminMovie = new AdminMovie();
+        $this->adminGenre = new AdminGenre();
+        $this->adminArtist = new AdminArtist();
+        $this->arrayMovies = Movie::convertMovieArrayForTwig($this->adminMovie->getAllMovies());
+        $this->arrayGenres = Genre::convertGenreArrayForTwig($this->adminGenre->getAllGenres());
+        $this->arrayArtists = AdminArtist::convertArtistArrayForTwig(($this->adminArtist->getAllArtists()));
     }
 
     public function showAddMovie()
